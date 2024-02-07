@@ -10,14 +10,31 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen(options =>
+//    options.MapType<DateOnly>(() => new OpenApiSchema
+//    {
+//        Type = "string",
+//        Format = "date",
+//        Example = new OpenApiString("2022-01-01")
+//    })
+//    );
 builder.Services.AddSwaggerGen(options =>
+{
     options.MapType<DateOnly>(() => new OpenApiSchema
     {
         Type = "string",
         Format = "date",
         Example = new OpenApiString("2022-01-01")
-    })
-    );
+    });
+
+    options.MapType<TimeOnly>(() => new OpenApiSchema
+    {
+        Type = "string",
+        Format = "time",
+        Example = new OpenApiString("13:30:00")
+    });
+});
+
 
 builder.Services.AddDbContext<hpDbcontext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("healthPortConnectionString")));

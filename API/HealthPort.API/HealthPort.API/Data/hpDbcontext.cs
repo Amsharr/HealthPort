@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthPort.API.Data
 {
-    public class _dbcontext : DbContext
+    public class hpDbcontext : DbContext
     {
-        public _dbcontext(DbContextOptions options) : base(options)
+        public hpDbcontext(DbContextOptions options) : base(options)
         {
         }
 

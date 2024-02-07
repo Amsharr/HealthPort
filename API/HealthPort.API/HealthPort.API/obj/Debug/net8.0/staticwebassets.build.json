@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "NFtJb5KsPHADvu+k+s7ebJg5uFIM3Ai75HiY5b6TmGw=",
+  "Source": "HealthPort.API",
+  "BasePath": "_content/HealthPort.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

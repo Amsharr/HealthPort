@@ -1,5 +1,7 @@
 using HealthPort.API.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,9 +10,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+    options.MapType<DateOnly>(() => new OpenApiSchema
+    {
+        Type = "string",
+        Format = "date",
+        Example = new OpenApiString("2022-01-01")
+    })
+    );
 
-builder.Services.AddDbContext<_dbcontext>(options =>
+builder.Services.AddDbContext<hpDbcontext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("healthPortConnectionString")));
 
 var app = builder.Build();

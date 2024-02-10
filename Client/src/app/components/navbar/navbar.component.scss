@@ -1,0 +1,48 @@
+.navbar-custom {
+    background-color: #f1f1f0;
+    img {
+      max-height: 50px; 
+      margin-right: auto;
+      margin-left: 30px;
+    }
+    
+    .navbar-nav {
+      li {
+        a {
+          color: #71706E;
+          transition: all 0.3s ease;
+          &:hover {
+            color: #3f96e2;
+            transform: scale(1.1); 
+          }
+        }
+      }
+    }
+    .navbar-brand {
+      margin-right: auto;
+      margin-left: 30px;
+    }    
+    
+    .btn-login {
+      margin-left: auto;
+      margin-right: 30px;
+      background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+      padding: 8px 20px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: white;            
+      box-shadow: 0 0 20px #eee;
+      border-radius: 20px;
+      display: block;
+      border: none;
+  
+      &:hover{
+          background-position: right center;
+          color: #fff;
+          text-decoration: none;
+      }
+    }
+    
+  }

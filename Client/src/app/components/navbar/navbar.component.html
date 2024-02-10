@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <img src="../../../assets/img/logo.jpg" alt="Logo" routerLink="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="Appointment">Book Appointment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Our facilities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="Appointment">Contact</a>
+          </li>
+        </ul>
+      </div>  
+      <div *ngIf="menuType==='landing-page'">
+        <button class="btn-login" type="submit" routerLink='/landing-page/select-user'>
+          <a><i class="fa-solid fa-right-to-bracket"></i> <span class="ms-1 d-none d-sm-inline">Sign in</span></a>
+        </button>       
+      </div>           
+    </div>
+  </nav>  

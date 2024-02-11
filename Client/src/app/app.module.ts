@@ -20,7 +20,7 @@ import { FacilitiesComponent } from './components/landing-page/facilities/facili
 import { AboutComponent } from './components/landing-page/about/about.component';
 import { HomepageComponent } from './components/Patients/homepage/homepage.component';
 import { BookAppointmentsComponent } from './components/appointments/book-appointments/book-appointments.component';
-
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,8 @@ import { BookAppointmentsComponent } from './components/appointments/book-appoin
     NgbModule,
     FormsModule,
     HttpClientModule,
-    CalendarModule
+    CalendarModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -25,7 +25,7 @@ export class PatientLoginComponent {
 
     this.loading = true;
 
-    this.http.post<any>('http://localhost:5090/login', loginData)
+    this.http.post<any>('https://localhost:7124/login', loginData)
       .pipe(
         catchError(this.handleError),
         finalize(() => {

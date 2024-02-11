@@ -18,7 +18,12 @@ menuType:String = 'default'
     const currentUrl: string = this.router.url;
     if (currentUrl.includes('landing-page')) {
       this.menuType = 'landing-page';
-    } else {
+    }
+    else if (currentUrl.includes('homepage'))
+    {
+      this.menuType = 'homepage';
+    }
+    else {
       this.menuType = 'default';
     }
   }

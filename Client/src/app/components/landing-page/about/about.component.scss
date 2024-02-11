@@ -1,0 +1,13 @@
+$txt-color:white;
+
+.hospital-about {
+    text-align: center;
+    background-image: linear-gradient(to right, #0e4cc0 0%, #0e4cc0  51%, #1FA2FF  100%);
+    
+    h2 {
+      padding-top: 20px;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color:$txt-color;
+    }
+}

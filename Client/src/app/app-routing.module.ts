@@ -7,6 +7,9 @@ import { DoctorLoginComponent } from './components/landing-page/login-page/docto
 import { NurseLoginComponent } from './components/landing-page/login-page/nurse-login/nurse-login.component';
 import { AdminLoginComponent } from './components/landing-page/login-page/admin-login/admin-login.component';
 import { PatRegistrationComponent } from './components/Patients/account/pat-registration/pat-registration.component';
+import { FacilitiesComponent } from './components/landing-page/facilities/facilities.component';
+import { HomepageComponent } from './components/Patients/homepage/homepage.component';
+import { BookAppointmentsComponent } from './components/appointments/book-appointments/book-appointments.component';
 
 const routes: Routes = [
   { 
@@ -36,6 +39,15 @@ const routes: Routes = [
   },
   { path:'landing-page/pat-registration',
     component: PatRegistrationComponent
+  },
+  { path:'landing-page/facilities',
+    component: FacilitiesComponent
+  },
+  { path:'homepage',
+    component: HomepageComponent
+  },
+  { path:'homepage/book-appointment',
+    component: BookAppointmentsComponent
   }
 ];
 

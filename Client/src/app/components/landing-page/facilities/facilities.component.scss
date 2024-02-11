@@ -1,0 +1,76 @@
+$txt-color: white;
+
+.hospital-facilities {
+    text-align: center;
+    background-image: linear-gradient(to right, #0e4cc0 0%, #0e4cc0  51%, #1FA2FF  100%);
+    
+    h2 {
+      padding-top: 20px;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color:$txt-color;
+    }
+    
+    .facility {
+      display: inline-block;
+      margin: 10px;
+      
+      img {
+        width: 400px;
+        height: 300px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        &:hover{
+          transform: scale(1.05);
+        }
+      }
+      
+      p {
+        font-size: 14px;
+        margin-top: 5px;
+        color: $txt-color;
+      }
+    }
+
+    button {
+      background: #fff;
+      border: none;
+      padding: 10px 20px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 600;
+      width: 120px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transform: skew(-21deg);
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        left: 0;
+        background: rgb(20, 20, 20);
+        opacity: 0;
+        z-index: -1;
+        transition: all 0.5s;
+      }
+    
+      &:hover {
+        color: #fff;
+        background: silver; // Change background color to shiny silver
+      }
+    
+      &:hover::before {
+        left: 0;
+        right: 0;
+        opacity: 1;
+      }
+    }
+    
+  }
+  
+  

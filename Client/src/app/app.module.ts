@@ -16,6 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { PatRegistrationComponent } from './components/Patients/account/pat-registration/pat-registration.component';
 import { PatAccountComponent } from './components/Patients/account/pat-account/pat-account.component';
 import { CalendarModule } from 'primeng/calendar';
+import { FacilitiesComponent } from './components/landing-page/facilities/facilities.component';
+import { AboutComponent } from './components/landing-page/about/about.component';
+import { HomepageComponent } from './components/Patients/homepage/homepage.component';
+import { BookAppointmentsComponent } from './components/appointments/book-appointments/book-appointments.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { CalendarModule } from 'primeng/calendar';
     NurseLoginComponent,
     AdminLoginComponent,
     PatRegistrationComponent,
-    PatAccountComponent
+    PatAccountComponent,
+    FacilitiesComponent,
+    AboutComponent,
+    HomepageComponent,
+    BookAppointmentsComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,11 @@ import { PatientLoginComponent } from './components/landing-page/login-page/pati
 import { DoctorLoginComponent } from './components/landing-page/login-page/doctor-login/doctor-login/doctor-login.component';
 import { NurseLoginComponent } from './components/landing-page/login-page/nurse-login/nurse-login.component';
 import { AdminLoginComponent } from './components/landing-page/login-page/admin-login/admin-login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PatRegistrationComponent } from './components/Patients/account/pat-registration/pat-registration.component';
+import { PatAccountComponent } from './components/Patients/account/pat-account/pat-account.component';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -21,12 +26,17 @@ import { AdminLoginComponent } from './components/landing-page/login-page/admin-
     PatientLoginComponent,
     DoctorLoginComponent,
     NurseLoginComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    PatRegistrationComponent,
+    PatAccountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

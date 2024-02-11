@@ -14,4 +14,11 @@
         public string password { get; set; }      
 
     }
+
+    public class patLogin
+    {
+        public int id { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+    }
 }

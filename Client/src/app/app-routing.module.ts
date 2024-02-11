@@ -6,6 +6,7 @@ import { PatientLoginComponent } from './components/landing-page/login-page/pati
 import { DoctorLoginComponent } from './components/landing-page/login-page/doctor-login/doctor-login/doctor-login.component';
 import { NurseLoginComponent } from './components/landing-page/login-page/nurse-login/nurse-login.component';
 import { AdminLoginComponent } from './components/landing-page/login-page/admin-login/admin-login.component';
+import { PatRegistrationComponent } from './components/Patients/account/pat-registration/pat-registration.component';
 
 const routes: Routes = [
   { 
@@ -33,6 +34,9 @@ const routes: Routes = [
   { path:'landing-page/admin-login',
     component: AdminLoginComponent
   },
+  { path:'landing-page/pat-registration',
+    component: PatRegistrationComponent
+  }
 ];
 
 @NgModule({

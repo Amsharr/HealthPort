@@ -32,5 +32,19 @@ namespace HealthPort.API.Controllers
 
             return Ok(patientRequest);
         }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> login([FromBody] patLogin loginRequest)
+        {
+            var patient = await _hpDbcontext.Patients
+                .FirstOrDefaultAsync(p => p.username == loginRequest.username && p.password == loginRequest.password);
+
+            if (patient == null)
+                return NotFound("Invalid username or password.");
+
+            return Ok(patient);
+        }
+
     }
 }

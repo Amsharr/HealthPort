@@ -21,6 +21,9 @@ import { AboutComponent } from './components/landing-page/about/about.component'
 import { HomepageComponent } from './components/Patients/homepage/homepage.component';
 import { BookAppointmentsComponent } from './components/appointments/book-appointments/book-appointments.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { AdminDashboardComponent } from './components/Admin/admin-dashboard/admin-dashboard.component';
+import { HomeComponent } from './components/landing-page/home/home.component';
+import { PatientListComponent } from './components/Admin/patient-list/patient-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,10 @@ import { DropdownModule } from 'primeng/dropdown';
     FacilitiesComponent,
     AboutComponent,
     HomepageComponent,
-    BookAppointmentsComponent
+    BookAppointmentsComponent,
+    AdminDashboardComponent,
+    HomeComponent,
+    PatientListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="container my-5">
+    <h1>patients</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>fname</th>
+                <th>lname</th>
+                <th>dob</th>
+                <th>nic</th>
+                <th>mobileno</th>
+                <th>email</th>
+                <th>address</th>
+                <th>username</th>
+                <th>password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of patients">
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.firstName }}</td>
+                <td>{{ patient.lastName }}</td>
+                <td>{{ patient.dob }}</td>
+                <td>{{ patient.nicNo }}</td>
+                <td>{{ patient.mobileNo }}</td>
+                <td>{{ patient.email }}</td>
+                <td>{{ patient.address }}</td>
+                <td>{{ patient.username }}</td>
+                <td>{{ patient.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -10,6 +10,8 @@ import { PatRegistrationComponent } from './components/Patients/account/pat-regi
 import { FacilitiesComponent } from './components/landing-page/facilities/facilities.component';
 import { HomepageComponent } from './components/Patients/homepage/homepage.component';
 import { BookAppointmentsComponent } from './components/appointments/book-appointments/book-appointments.component';
+import { AdminDashboardComponent } from './components/Admin/admin-dashboard/admin-dashboard.component';
+import { PatAccountComponent } from './components/Patients/account/pat-account/pat-account.component';
 
 const routes: Routes = [
   { 
@@ -48,6 +50,12 @@ const routes: Routes = [
   },
   { path:'homepage/book-appointment',
     component: BookAppointmentsComponent
+  },
+  { path:'admin-dashboard',
+    component: AdminDashboardComponent
+  },
+  { path:'homepage/account',
+    component: PatAccountComponent
   }
 ];
 

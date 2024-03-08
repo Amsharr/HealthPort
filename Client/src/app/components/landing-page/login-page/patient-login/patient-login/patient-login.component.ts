@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, finalize } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-patient-login',
@@ -15,6 +16,8 @@ export class PatientLoginComponent {
   password: string = '';
   loading: boolean = false;
 
+  baseApiUrl: string = environment.baseApiUrl;
+
   constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit() {
@@ -25,7 +28,7 @@ export class PatientLoginComponent {
 
     this.loading = true;
 
-    this.http.post<any>('https://localhost:7124/login', loginData)
+    this.http.post<any>(this.baseApiUrl + '/api/Patients/login', loginData)
       .pipe(
         catchError(this.handleError),
         finalize(() => {

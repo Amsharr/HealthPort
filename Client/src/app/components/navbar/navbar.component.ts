@@ -23,6 +23,10 @@ menuType:String = 'default'
     {
       this.menuType = 'homepage';
     }
+    else if (currentUrl.includes('admin'))
+    {
+      this.menuType = 'admin'
+    }
     else {
       this.menuType = 'default';
     }

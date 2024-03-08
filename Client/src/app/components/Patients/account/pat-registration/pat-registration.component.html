@@ -1,18 +1,32 @@
 <app-navbar></app-navbar>
 <body>
-    <form class="form">
+    <form class="form" #form="ngForm" (ngSubmit)="addPatient()">
         <p class="title">Register </p>
         <p class="message">Signup now and get full access to our app. </p>
         <div class="flex">
             <div class="half-width">
                 <label>
-                    <input class="input" type="text" placeholder="" required="">
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="FirstName" 
+                    name="FirstName"
+                    [(ngModel)]="patientRegistration.firstName"
+                    placeholder="" 
+                    required="">
                     <span>Firstname *</span>
                 </label>
             </div>
             <div class="half-width">
                 <label>
-                    <input class="input" type="text" placeholder="" required="">
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="LastName" 
+                    name="LastName"
+                    [(ngModel)]="patientRegistration.lastName"
+                    placeholder="" 
+                    required="">
                     <span>Lastname *</span>
                 </label>
             </div>
@@ -21,13 +35,27 @@
         <div class="flex">
             <div class="half-width">
                 <label>
-                    <input class="input" type="date" required="">
+                    <input 
+                    class="input" 
+                    type="date" 
+                    id="DateOfBirth"
+                    [placeholder]="''" 
+                    name="DateOfBirth"
+                    [(ngModel)]="patientRegistration.dob"
+                    required="">
                     <span>Date of Birth *</span>
                 </label>
             </div>
             <div class="half-width">
                 <label>
-                    <input class="input" type="text" placeholder="" required="">
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="NicNo"
+                    name="NicNo"
+                    [(ngModel)]="patientRegistration.nicNo"  
+                    placeholder="" 
+                    required="">
                     <span>NIC No</span>
                 </label>
             </div>
@@ -36,33 +64,68 @@
         <div class="flex">
             <div class="half-width">
                 <label>
-                    <input class="input" type="text" placeholder="" required="">
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="MobileNo" 
+                    name="MobileNo"
+                    [(ngModel)]="patientRegistration.mobileNo"
+                    placeholder="" 
+                    required="">
                     <span>Mobile No *</span>
                 </label>
             </div>
             <div class="half-width">
                 <label>
-                    <input class="input" type="email" placeholder="" required="">
+                    <input 
+                    class="input" 
+                    type="email" 
+                    id="Email" 
+                    name="Email"
+                    [(ngModel)]="patientRegistration.email"
+                    placeholder="" 
+                    required="">
                     <span>Email</span>
                 </label>
             </div>
         </div>
-    
+        
         <label>
-            <input class="input" type="text" placeholder="" required="">
+            <input 
+            class="input" 
+            type="text" 
+            id="Address" 
+            name="Address"
+            [(ngModel)]="patientRegistration.address"
+            placeholder=""
+            required="">
             <span>Address</span>
         </label> 
     
         <div class="flex">
             <div class="half-width">
                 <label>
-                    <input class="input" type="text" placeholder="" required="">
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="Username" 
+                    name="Username"
+                    [(ngModel)]="patientRegistration.username"
+                    placeholder="" 
+                    required="">
                     <span>Username *</span>
                 </label>
             </div>
             <div class="half-width">
                 <label>
-                    <input class="input" type="password" placeholder="" required="">
+                    <input 
+                    class="input" 
+                    type="password" 
+                    id="Password" 
+                    name="Password"
+                    [(ngModel)]="patientRegistration.password"
+                    placeholder="" 
+                    required="">
                     <span>Password *</span>
                 </label>
             </div>

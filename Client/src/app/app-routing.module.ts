@@ -12,6 +12,7 @@ import { HomepageComponent } from './components/Patients/homepage/homepage.compo
 import { BookAppointmentsComponent } from './components/appointments/book-appointments/book-appointments.component';
 import { AdminDashboardComponent } from './components/Admin/admin-dashboard/admin-dashboard.component';
 import { PatAccountComponent } from './components/Patients/account/pat-account/pat-account.component';
+import { PatientListComponent } from './components/Admin/patient-list/patient-list.component';
 
 const routes: Routes = [
   { 
@@ -56,6 +57,10 @@ const routes: Routes = [
   },
   { path:'homepage/account',
     component: PatAccountComponent
+  },
+  {
+    path: 'admin/patient-list',
+    component: PatientListComponent 
   }
 ];
 

@@ -24,6 +24,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { AdminDashboardComponent } from './components/Admin/admin-dashboard/admin-dashboard.component';
 import { HomeComponent } from './components/landing-page/home/home.component';
 import { PatientListComponent } from './components/Admin/patient-list/patient-list.component';
+import { AdvanceSearchComponent } from './components/Admin/advance-search/advance-search.component';
+import { SidePanelComponent } from './components/Admin/side-panel/side-panel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,9 @@ import { PatientListComponent } from './components/Admin/patient-list/patient-li
     BookAppointmentsComponent,
     AdminDashboardComponent,
     HomeComponent,
-    PatientListComponent
+    PatientListComponent,
+    AdvanceSearchComponent,
+    SidePanelComponent
   ],
   imports: [
     BrowserModule,

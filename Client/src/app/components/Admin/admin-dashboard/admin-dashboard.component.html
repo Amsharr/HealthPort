@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2 bg-grey">
+            <app-side-panel></app-side-panel>
+        </div>
+        <div class="col py-3">
+            <h1 style="color: white; margin-left: 8px;">Dashboard <i class="fa-solid fa-chart-line"></i></h1>
+            <div class="cards">
+                <div class="card" routerLink="/admin/patient-list">
+                    <p class="time-text"><span>4</span></p>
+                    <p class="day-text">View all Patients</p>
+                    <i class="fa-solid fa-hospital-user icon"></i>
+                </div>
+                <div class="card">
+                    <p class="time-text"><span>0</span></p>
+                    <p class="day-text">View all Doctors</p>
+                    <i class="fa-solid fa-user-doctor icon"></i>
+                </div>
+                <div class="card">
+                    <p class="time-text"><span>0</span></p>
+                    <p class="day-text">View all Nurses</p>
+                    <i class="fa-solid fa-user-nurse icon"></i>
+                </div>
+                <div class="card">
+                    <p class="time-text"><span>0</span></p>
+                    <p class="day-text">View all wards</p>
+                    <i class="fa-solid fa-bed-pulse icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

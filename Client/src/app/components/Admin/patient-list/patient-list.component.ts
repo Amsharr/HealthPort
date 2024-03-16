@@ -13,7 +13,9 @@ export class PatientListComponent implements OnInit{
   /**
    *
    */
-  constructor(private patientsservice: PatientsService) {
+  constructor(
+    private patientsservice: PatientsService
+    ) {
   }
 
   ngOnInit(): void {

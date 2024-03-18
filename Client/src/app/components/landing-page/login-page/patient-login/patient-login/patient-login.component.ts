@@ -37,8 +37,6 @@ export class PatientLoginComponent {
       )
       .subscribe(
         response => {
-          // Handle successful login response
-          console.log('Login successful:', response);
           this.router.navigate(['/homepage']);
         }
       );

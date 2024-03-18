@@ -4,30 +4,57 @@
         <div class="col-2 bg-grey">
             <app-side-panel></app-side-panel>
         </div>
-        <div class="col py-3">
-            <h1 style="color: white; margin-left: 8px;">Dashboard <i class="fa-solid fa-chart-line"></i></h1>
-            <div class="cards">
-                <div class="card" routerLink="/admin/patient-list">
-                    <p class="time-text"><span>4</span></p>
-                    <p class="day-text">View all Patients</p>
-                    <i class="fa-solid fa-hospital-user icon"></i>
-                </div>
-                <div class="card">
-                    <p class="time-text"><span>0</span></p>
-                    <p class="day-text">View all Doctors</p>
-                    <i class="fa-solid fa-user-doctor icon"></i>
-                </div>
-                <div class="card">
-                    <p class="time-text"><span>0</span></p>
-                    <p class="day-text">View all Nurses</p>
-                    <i class="fa-solid fa-user-nurse icon"></i>
-                </div>
-                <div class="card">
-                    <p class="time-text"><span>0</span></p>
-                    <p class="day-text">View all wards</p>
-                    <i class="fa-solid fa-bed-pulse icon"></i>
+        <div class="col py-3" style="margin-left: 230px">
+            <div class="row-1">
+                <h1>Dashboard <i class="fa-solid fa-chart-line"></i></h1>
+                <div class="cards">
+                    <div class="card" routerLink="/admin/patient-list">
+                        <p class="time-text"><span>4</span></p>
+                        <p class="day-text">View all Patients</p>
+                        <i class="fa-solid fa-hospital-user icon"></i>
+                    </div>
+                    <div class="card">
+                        <p class="time-text"><span>0</span></p>
+                        <p class="day-text">View all Doctors</p>
+                        <i class="fa-solid fa-user-doctor icon"></i>
+                    </div>
+                    <div class="card">
+                        <p class="time-text"><span>0</span></p>
+                        <p class="day-text">View all Nurses</p>
+                        <i class="fa-solid fa-user-nurse icon"></i>
+                    </div>
+                    <div class="card">
+                        <p class="time-text"><span>0</span></p>
+                        <p class="day-text">View all wards</p>
+                        <i class="fa-solid fa-bed-pulse icon"></i>
+                    </div>
                 </div>
             </div>
+            <div class="row-2">
+                <h3>Create user</h3>
+                <div class="cards">
+                    <div class="card green" routerLink="/admin/patient-list">
+                        <p class="time-text">+</p>
+                        <p class="day-text">Create Patient Account</p>
+                        <i class="fa-solid fa-hospital-user icon"></i>
+                    </div>
+                    <div class="card green">
+                        <p class="time-text"><span>+</span></p>
+                        <p class="day-text">Create Doctor Account</p>
+                        <i class="fa-solid fa-user-doctor icon"></i>
+                    </div>
+                    <div class="card green">
+                        <p class="time-text"><span>+</span></p>
+                        <p class="day-text">Create Nurse Account</p>
+                        <i class="fa-solid fa-user-nurse icon"></i>
+                    </div>
+                    <div class="card green">
+                        <p class="time-text"><span>+</span></p>
+                        <p class="day-text">Create Ward Room</p>
+                        <i class="fa-solid fa-bed-pulse icon"></i>
+                    </div>
+                </div>
+            </div>            
         </div>
     </div>
 </div>

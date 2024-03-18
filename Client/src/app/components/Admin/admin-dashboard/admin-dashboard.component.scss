@@ -27,12 +27,18 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
+
+    &:hover {
+      box-shadow: rgb(0,0,0) 5px 10px 50px ,rgb(0,0,0) -5px 0px 250px;
+    }
+
+    
   }
   
-  .card:hover {
-    box-shadow: rgb(0,0,0) 5px 10px 50px ,rgb(0,0,0) -5px 0px 250px;
-  }
-  
+  .green{
+    background: #198754;
+   }
+   
   .time-text {
     font-size: 50px;
     margin-top: 0px;
@@ -65,5 +71,24 @@
   .card:hover > .icon {
     font-size: 23px;
   }
+
+  .col-2 {
+    background-color: #000000;
+    height: 100%; 
+    padding: 20px;
+    position: fixed;
+    margin-right: 100px;
+  }
   
+  h1, h3{
+    color: white;
+    margin-left: 8px;
+  }
+
+  h3{
+    padding-top: 100px;
+    padding-bottom: 15px;
+    padding-left: 8px;
+  }
+
   

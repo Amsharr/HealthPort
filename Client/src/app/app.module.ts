@@ -26,6 +26,7 @@ import { HomeComponent } from './components/landing-page/home/home.component';
 import { PatientListComponent } from './components/Admin/patient-list/patient-list.component';
 import { AdvanceSearchComponent } from './components/Admin/advance-search/advance-search.component';
 import { SidePanelComponent } from './components/Admin/side-panel/side-panel.component';
+import { DoctorListComponent } from './components/Admin/doctor-list/doctor-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { SidePanelComponent } from './components/Admin/side-panel/side-panel.com
     HomeComponent,
     PatientListComponent,
     AdvanceSearchComponent,
-    SidePanelComponent
+    SidePanelComponent,
+    DoctorListComponent
   ],
   imports: [
     BrowserModule,

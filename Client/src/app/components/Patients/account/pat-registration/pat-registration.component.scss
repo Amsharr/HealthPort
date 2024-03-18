@@ -104,11 +104,6 @@ body{
         transition: 0.3s ease;
       }
 
-      // &:placeholder-shown + span {
-      //   top: 12.5px;
-      //   font-size: 0.9em;
-      // }
-
       &:focus + span,
       &:valid + span {
         color: $form-focus;

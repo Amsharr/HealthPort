@@ -1,0 +1,30 @@
+h1 {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 50px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    font-size: 18px; 
+    transition: all 0.3s ease; 
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  i {
+    margin-left: 20px; 
+  }
+  
+  li:hover {
+    font-size: 20px; 
+    color: rgb(41, 90, 197); 
+  }
+  

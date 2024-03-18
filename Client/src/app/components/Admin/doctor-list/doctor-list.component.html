@@ -6,7 +6,7 @@
             <app-side-panel></app-side-panel>
         </div>
         <div class="col py-3" style="margin-left: 230px;">
-          <h1 style="color: white;">Patients  <i class="fa-solid fa-hospital-user icon"></i></h1>
+          <h1 style="color: white;">Patients  <i class="fa-solid fa-user-doctor icon"></i></h1>
 
           <app-advance-search></app-advance-search>
 
@@ -16,6 +16,7 @@
                       <th>id</th>
                       <th>First Name</th>
                       <th>Last Name</th>
+                      <th>Speciality</th>
                       <th>DOB</th>
                       <th>NIC</th>
                       <th>Mobile no.</th>
@@ -26,16 +27,16 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let patient of patients">
-                      <td>{{ patient.id }}</td>
-                      <td>{{ patient.firstName }}</td>
-                      <td>{{ patient.lastName }}</td>
-                      <td>{{ patient.dob }}</td>
-                      <td>{{ patient.nicNo }}</td>
-                      <td>{{ patient.mobileNo }}</td>
-                      <td>{{ patient.email }}</td>
-                      <td>{{ patient.address }}</td>
-                      <td>{{ patient.username }}</td>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                       <td style="text-align: center;">
                           <div class="btn-container">
                               <button class="editBtn">

@@ -7,7 +7,7 @@
             <p>Welcome to Healthport, Your Complete Management Solution</p>
         </div>
         <div class="buttons">
-            <button class="btn-appointment" routerLink="/homepage/book-appointment">
+            <button class="btn-appointment" (click)="openEnd(content)">
                 <a><span class="ms-1 d-none d-sm-inline">book an appointment     </span><i class="fa-regular fa-calendar-check"></i></a>
             </button>
             <button class="btn-learn">
@@ -18,4 +18,70 @@
     <!-- <app-about></app-about> -->
     <app-facilities></app-facilities>
 </body>
+
+<!-- book appointment offcanvas -->
+<ng-template #content let-offcanvas>
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title">Book Appointment</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form class="form" #form="ngForm">
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="text" 
+                        id="speciality" 
+                        name="speciality"
+                        placeholder="" 
+                        required="">
+                        <span>Patient name</span>
+                    </label>
+                </div> 
+            <div class="flex">
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="text" 
+                        id="speciality" 
+                        name="speciality"
+                        placeholder="" 
+                        required="">
+                        <span>Speciality</span>
+                    </label>
+                </div>
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="text" 
+                        id="LastName" 
+                        name="LastName"
+                        placeholder="" 
+                        required="">
+                        <span>Doctor</span>
+                    </label>
+                </div>
+            </div>
+    
+            <div class="flex">
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="date" 
+                        id="DateOfBirth"
+                        [placeholder]="''" 
+                        name="DateOfBirth"
+                        required="">
+                        <span>Date *</span>
+                    </label>
+                </div>
+            </div>            
+            <button class="submit">Book Appointment</button>
+        </form>   
+    </div>
+</ng-template>
     

@@ -27,18 +27,16 @@
     </div>
     <div class="offcanvas-body">
         <form class="form" #form="ngForm">
-                <div class="half-width">
-                    <label>
-                        <input 
-                        class="input" 
-                        type="text" 
-                        id="speciality" 
-                        name="speciality"
-                        placeholder="" 
-                        required="">
-                        <span>Patient name</span>
-                    </label>
-                </div> 
+                <label>
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="speciality" 
+                    name="speciality"
+                    placeholder="" 
+                    required="">
+                    <span>Patient name</span>
+                </label>
             <div class="flex">
                 <div class="half-width">
                     <label>
@@ -65,21 +63,16 @@
                     </label>
                 </div>
             </div>
-    
-            <div class="flex">
-                <div class="half-width">
-                    <label>
-                        <input 
-                        class="input" 
-                        type="date" 
-                        id="DateOfBirth"
-                        [placeholder]="''" 
-                        name="DateOfBirth"
-                        required="">
-                        <span>Date *</span>
-                    </label>
-                </div>
-            </div>            
+                <label>
+                    <input 
+                    class="input" 
+                    type="date" 
+                    id="DateOfBirth"
+                    [placeholder]="''" 
+                    name="DateOfBirth"
+                    required="">
+                    <span>Date *</span>
+                </label>    
             <button class="submit">Book Appointment</button>
         </form>   
     </div>

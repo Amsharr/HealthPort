@@ -1,5 +1,5 @@
 import { Component, TemplateRef, inject } from '@angular/core';
-import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-homepage',
@@ -7,6 +7,7 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent {
+  model: NgbDateStruct | undefined;
   private offcanvasService = inject(NgbOffcanvas);
 
 	openEnd(content: TemplateRef<any>) {

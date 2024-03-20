@@ -1,0 +1,147 @@
+<app-navbar></app-navbar>
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2">
+            <app-side-panel></app-side-panel>
+        </div>
+        <div class="col py-3" style="margin-left: 230px;">
+          <h1 style="color: white;">Create Patients Account  <i class="fa-solid fa-hospital-user icon"></i></h1>
+
+          <form class="form" #form="ngForm" (ngSubmit)="addPatient()">
+            <p class="title">Register </p>
+            <div class="flex">
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="text" 
+                        id="FirstName" 
+                        name="FirstName"
+                        [(ngModel)]="patientRegistration.firstName"
+                        placeholder="" 
+                        required="">
+                        <span>Firstname *</span>
+                    </label>
+                </div>
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="text" 
+                        id="LastName" 
+                        name="LastName"
+                        [(ngModel)]="patientRegistration.lastName"
+                        placeholder="" 
+                        required="">
+                        <span>Lastname *</span>
+                    </label>
+                </div>
+            </div>  
+    
+            <div class="flex">
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="date" 
+                        id="DateOfBirth"
+                        [placeholder]="''" 
+                        name="DateOfBirth"
+                        [(ngModel)]="patientRegistration.dob"
+                        required="">
+                        <span>Date of Birth *</span>
+                    </label>
+                </div>
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="text" 
+                        id="NicNo"
+                        name="NicNo"
+                        [(ngModel)]="patientRegistration.nicNo"  
+                        placeholder="" 
+                        required="">
+                        <span>NIC No</span>
+                    </label>
+                </div>
+            </div>        
+        
+            <div class="flex">
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="text" 
+                        id="MobileNo" 
+                        name="MobileNo"
+                        [(ngModel)]="patientRegistration.mobileNo"
+                        placeholder="" 
+                        required="">
+                        <span>Mobile No *</span>
+                    </label>
+                </div>
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="email" 
+                        id="Email" 
+                        name="Email"
+                        [(ngModel)]="patientRegistration.email"
+                        placeholder="" 
+                        required="">
+                        <span>Email</span>
+                    </label>
+                </div>
+            </div>
+            
+            <label>
+                <input 
+                class="input" 
+                type="text" 
+                id="Address" 
+                name="Address"
+                [(ngModel)]="patientRegistration.address"
+                placeholder=""
+                required="">
+                <span>Address</span>
+            </label> 
+        
+            <div class="flex">
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="text" 
+                        id="Username" 
+                        name="Username"
+                        [(ngModel)]="patientRegistration.username"
+                        placeholder="" 
+                        required="">
+                        <span>Username *</span>
+                    </label>
+                </div>
+                <div class="half-width">
+                    <label>
+                        <input 
+                        class="input" 
+                        type="password" 
+                        id="Password" 
+                        name="Password"
+                        [(ngModel)]="patientRegistration.password"
+                        placeholder="" 
+                        required="">
+                        <span>Password *</span>
+                    </label>
+                </div>
+            </div>
+        
+            <button class="submit">Create account</button>
+        </form>   
+        </div>
+    </div>
+  </div>
+</body>
+

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
-menuType:String = 'default'
+menuType:String = 'default';
+private offcanvasService = inject(NgbOffcanvas);
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -30,5 +32,9 @@ menuType:String = 'default'
     else {
       this.menuType = 'default';
     }
+  }
+
+  openEnd(content: TemplateRef<any>) {
+		this.offcanvasService.open(content, { position: 'end' });
   }
 }

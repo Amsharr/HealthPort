@@ -27,6 +27,7 @@ import { PatientListComponent } from './components/Admin/patient-list/patient-li
 import { AdvanceSearchComponent } from './components/Admin/advance-search/advance-search.component';
 import { SidePanelComponent } from './components/Admin/side-panel/side-panel.component';
 import { DoctorListComponent } from './components/Admin/doctor-list/doctor-list.component';
+import { CreatePatComponent } from './components/Admin/create-pat/create-pat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { DoctorListComponent } from './components/Admin/doctor-list/doctor-list.
     PatientListComponent,
     AdvanceSearchComponent,
     SidePanelComponent,
-    DoctorListComponent
+    DoctorListComponent,
+    CreatePatComponent
   ],
   imports: [
     BrowserModule,

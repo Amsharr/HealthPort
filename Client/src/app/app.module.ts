@@ -28,6 +28,10 @@ import { AdvanceSearchComponent } from './components/Admin/advance-search/advanc
 import { SidePanelComponent } from './components/Admin/side-panel/side-panel.component';
 import { DoctorListComponent } from './components/Admin/doctor-list/doctor-list.component';
 import { CreatePatComponent } from './components/Admin/create-pat/create-pat.component';
+import { CreateDocComponent } from './components/Admin/create-doc/create-doc.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessagesModule } from 'primeng/messages';
+import { Toast, ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +54,8 @@ import { CreatePatComponent } from './components/Admin/create-pat/create-pat.com
     AdvanceSearchComponent,
     SidePanelComponent,
     DoctorListComponent,
-    CreatePatComponent
+    CreatePatComponent,
+    CreateDocComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,9 +64,12 @@ import { CreatePatComponent } from './components/Admin/create-pat/create-pat.com
     FormsModule,
     HttpClientModule,
     CalendarModule,
-    DropdownModule
+    DropdownModule,
+    BrowserAnimationsModule,
+    MessagesModule,
+    ToastModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

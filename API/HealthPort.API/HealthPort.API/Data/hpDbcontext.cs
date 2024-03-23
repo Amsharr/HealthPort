@@ -12,5 +12,6 @@ namespace HealthPort.API.Data
         public DbSet<Patients> Patients { get; set; }
         public DbSet<Doctors> Doctors { get; set; }
         public DbSet<Appointments> Appointments { get; set; }
+        public DbSet<Specialites> Specialites { get; set; }
     }
 }

@@ -1,11 +1,17 @@
-﻿namespace HealthPort.API.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace HealthPort.API.Models
 {
     public class Doctors
     {
         public int id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public string speciality { get; set; }
+
+        [ForeignKey("Specialites")]
+        public int specialityid { get; set; }
+        public Specialites specialites { get; set; }
+
         public DateOnly dob { get; set; }
         public string nicNo { get; set; }
         public string mobileNo { get; set; }

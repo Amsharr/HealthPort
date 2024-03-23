@@ -14,6 +14,7 @@ import { AdminDashboardComponent } from './components/Admin/admin-dashboard/admi
 import { PatAccountComponent } from './components/Patients/account/pat-account/pat-account.component';
 import { PatientListComponent } from './components/Admin/patient-list/patient-list.component';
 import { CreatePatComponent } from './components/Admin/create-pat/create-pat.component';
+import { CreateDocComponent } from './components/Admin/create-doc/create-doc.component';
 
 const routes: Routes = [
   { 
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: 'admin/create-pataccount',
     component: CreatePatComponent
+  },
+  {
+    path: 'admin/create-docaccount',
+    component: CreateDocComponent
   }
 ];
 

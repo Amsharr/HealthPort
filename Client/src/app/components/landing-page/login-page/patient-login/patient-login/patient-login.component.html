@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <body>
-    <div class="container">
+    <div class="container-login">
         <div class="heading">Sign In</div>
         <form (submit)="onSubmit()" class="form">
           <div class="form-floating mb-3">
@@ -12,7 +12,8 @@
             <label for="Password">Password</label>
           </div>
           <span class="forgot-password"><a routerLink="/landing-page/pat-registration">Don't have an account? Create one here</a></span>
-          <input class="login-button" type="submit" value="Sign In">         
+          <input class="login-button" type="submit" value="Sign In">     
+          <p-toast></p-toast>
         </form>
           <span class="agreement"><a href="#">Learn user licence agreement</a></span>
     </div>

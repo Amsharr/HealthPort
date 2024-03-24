@@ -32,6 +32,7 @@ import { CreateDocComponent } from './components/Admin/create-doc/create-doc.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
 import { Toast, ToastModule } from 'primeng/toast';
+import { CreateNurseComponent } from './components/Admin/create-nurse/create-nurse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +57,7 @@ import { Toast, ToastModule } from 'primeng/toast';
     DoctorListComponent,
     CreatePatComponent,
     CreateDocComponent,
+    CreateNurseComponent,
   ],
   imports: [
     BrowserModule,

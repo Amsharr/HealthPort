@@ -16,6 +16,7 @@ import { PatientListComponent } from './components/Admin/patient-list/patient-li
 import { CreatePatComponent } from './components/Admin/create-pat/create-pat.component';
 import { CreateDocComponent } from './components/Admin/create-doc/create-doc.component';
 import { CreateNurseComponent } from './components/Admin/create-nurse/create-nurse.component';
+import { DoctorListComponent } from './components/Admin/doctor-list/doctor-list.component';
 
 const routes: Routes = [
   { 
@@ -64,6 +65,10 @@ const routes: Routes = [
   {
     path: 'admin/patient-list',
     component: PatientListComponent 
+  },
+  {
+    path: 'admin/doctor-list',
+    component: DoctorListComponent 
   },
   {
     path: 'admin/create-pataccount',

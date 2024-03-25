@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HealthPort.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbc8f894cfc3ffae2274cb765b0cfc6d26b62f6a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5dac1de232d2c78c89ad2eaacccf6f5fc29d3590")]
 [assembly: System.Reflection.AssemblyProductAttribute("HealthPort.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HealthPort.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

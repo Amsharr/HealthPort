@@ -39,8 +39,11 @@ namespace HealthPort.API.Migrations
                     b.Property<int>("patientId")
                         .HasColumnType("int");
 
-                    b.Property<string>("paymentStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("paymentid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("specialityid")
+                        .HasColumnType("int");
 
                     b.Property<TimeOnly>("time")
                         .HasColumnType("time");
@@ -50,6 +53,10 @@ namespace HealthPort.API.Migrations
                     b.HasIndex("doctorid");
 
                     b.HasIndex("patientId");
+
+                    b.HasIndex("paymentid");
+
+                    b.HasIndex("specialityid");
 
                     b.ToTable("Appointments");
                 });
@@ -86,9 +93,6 @@ namespace HealthPort.API.Migrations
                     b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("specialitesid")
-                        .HasColumnType("int");
-
                     b.Property<int>("specialityid")
                         .HasColumnType("int");
 
@@ -97,9 +101,49 @@ namespace HealthPort.API.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("specialitesid");
+                    b.HasIndex("specialityid");
 
                     b.ToTable("Doctors");
+                });
+
+            modelBuilder.Entity("HealthPort.API.Models.Nurses", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly>("dob")
+                        .HasColumnType("date");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("firstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mobileNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nicNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Nurses");
                 });
 
             modelBuilder.Entity("HealthPort.API.Models.Patients", b =>
@@ -142,6 +186,22 @@ namespace HealthPort.API.Migrations
                     b.ToTable("Patients");
                 });
 
+            modelBuilder.Entity("HealthPort.API.Models.Payments", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("HealthPort.API.Models.Specialites", b =>
                 {
                     b.Property<int>("id")
@@ -160,30 +220,48 @@ namespace HealthPort.API.Migrations
 
             modelBuilder.Entity("HealthPort.API.Models.Appointments", b =>
                 {
-                    b.HasOne("HealthPort.API.Models.Doctors", "Doctors")
+                    b.HasOne("HealthPort.API.Models.Doctors", "doctor")
                         .WithMany()
                         .HasForeignKey("doctorid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HealthPort.API.Models.Patients", "Patients")
+                    b.HasOne("HealthPort.API.Models.Patients", "patient")
                         .WithMany()
                         .HasForeignKey("patientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Doctors");
+                    b.HasOne("HealthPort.API.Models.Payments", "payment")
+                        .WithMany()
+                        .HasForeignKey("paymentid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Patients");
+                    b.HasOne("HealthPort.API.Models.Specialites", "speciality")
+                        .WithMany()
+                        .HasForeignKey("specialityid")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("doctor");
+
+                    b.Navigation("patient");
+
+                    b.Navigation("payment");
+
+                    b.Navigation("speciality");
                 });
 
             modelBuilder.Entity("HealthPort.API.Models.Doctors", b =>
                 {
-                    b.HasOne("HealthPort.API.Models.Specialites", "specialites")
+                    b.HasOne("HealthPort.API.Models.Specialites", "speciality")
                         .WithMany()
-                        .HasForeignKey("specialitesid");
+                        .HasForeignKey("specialityid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("specialites");
+                    b.Navigation("speciality");
                 });
 #pragma warning restore 612, 618
         }

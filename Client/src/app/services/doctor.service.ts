@@ -22,6 +22,8 @@ export class DoctorService {
     return this.http.post<Doctor>(this.baseApiUrl + '/api/Doctors', doctorRegistration);
   }
 
+  //api to get specialities
+
   getAllSpecialities(): Observable<Speciality[]> {
     return this.http.get<Speciality[]>(this.baseApiUrl + '/api/Specialities');
   }

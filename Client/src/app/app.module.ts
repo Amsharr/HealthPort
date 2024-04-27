@@ -33,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
 import { Toast, ToastModule } from 'primeng/toast';
 import { CreateNurseComponent } from './components/Admin/create-nurse/create-nurse.component';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,7 @@ import { CreateNurseComponent } from './components/Admin/create-nurse/create-nur
     MessagesModule,
     ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

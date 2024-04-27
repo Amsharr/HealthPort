@@ -32,5 +32,18 @@ namespace HealthPort.API.Controllers
 
             return Ok(doctorsRequest);
         }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> login([FromBody] Doctors loginRequest)
+        {
+            var doctor = await _hpDbcontext.Doctors
+                .FirstOrDefaultAsync(d => d.username == loginRequest.username && d.password == loginRequest.password);
+
+            if (doctor == null)
+                return NotFound("Invalid username or password.");
+
+            return Ok(doctor);
+        }
     }
 }

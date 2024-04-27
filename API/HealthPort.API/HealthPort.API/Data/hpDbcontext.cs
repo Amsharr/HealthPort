@@ -16,6 +16,7 @@ namespace HealthPort.API.Data
         public DbSet<Nurses> Nurses { get; set; }
         public DbSet<Payments> Payments { get; set; }
         public DbSet<Appointments> Appointments { get; set; }
+        public DbSet<Admin> Admin { get; set; }    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

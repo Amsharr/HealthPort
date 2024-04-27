@@ -25,7 +25,7 @@ export class PatientLoginComponent {
     private messageService: MessageService
   ) {}
 
-  onSubmit() {debugger
+  onSubmit() {
     const loginData = {
       username: this.username,
       password: this.password,
@@ -41,7 +41,7 @@ export class PatientLoginComponent {
           this.loading = false;
         })
       )
-      .subscribe((response) => {debugger
+      .subscribe((response) => {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',

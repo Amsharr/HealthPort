@@ -67,6 +67,7 @@ export class PatientEditComponent {
   update(patient: any){
     this.patientService.editPatient(patient).subscribe({
       next: () => {
+        localStorage.removeItem('patient')
         this.router.navigate(['/admin/patient-list']);
       },
       error: (response) => {

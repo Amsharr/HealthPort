@@ -25,6 +25,7 @@ export class PatientLoginComponent {
   onSubmit() {
     this.authenticationService.login(this.username, this.password, '/api/Patients/login')
     .subscribe((response) => {
+      sessionStorage.setItem('username', response.username);
       this.router.navigate(['/homepage']);
     });
   }

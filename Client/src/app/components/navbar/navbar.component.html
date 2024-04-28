@@ -77,12 +77,12 @@
       </div>
       <div *ngIf="menuType==='homepage'">
         <button class="btn-login" type="submit" routerLink='/homepage/account'>
-          <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">Account</span></a>
+          <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
         </button>       
       </div>
       <div *ngIf="menuType==='admin'">
         <button class="btn-login" type="submit" >
-          <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">Account</span></a>
+          <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
         </button>       
       </div>            
     </div>

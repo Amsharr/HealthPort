@@ -9,11 +9,13 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 })
 export class NavbarComponent implements OnInit {
 menuType:String = 'default';
+username: string = '';
 private offcanvasService = inject(NgbOffcanvas);
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.setNavType();
+    this.username = sessionStorage.getItem('username') ?? '';
   }
 
   private setNavType(): void {

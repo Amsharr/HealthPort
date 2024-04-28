@@ -3,20 +3,26 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { Patient } from '../Models/patient.model';
+import { APIService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientsService {
-
-  baseApiUrl: string = environment.baseApiUrl;
-  constructor(private http: HttpClient) { }
+  private endpoint: string = '/api/Patients'
+  
+  constructor(private apiService: APIService) { }
 
   getAllPatients(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(this.baseApiUrl + '/api/Patients');
+    return this.apiService.get<Patient>(this.endpoint);
   }
 
   addPatient(patientRegistration: Patient): Observable<Patient> {
-    return this.http.post<Patient>(this.baseApiUrl + '/api/Patients', patientRegistration);
+    return this.apiService.post<Patient>(this.endpoint,patientRegistration);
+  }
+
+  editPatient(updatePatient: Patient): Observable<Patient>{
+    const updateEndpoint = this.endpoint + '/update'
+    return this.apiService.put<Patient>(updateEndpoint,updatePatient)
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../../../Models/patient.model';
 import { PatientsService } from '../../../services/patients.service';
+import { SharedService } from '../../../services/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-list',
@@ -11,11 +13,21 @@ export class PatientListComponent implements OnInit{
   patients: Patient[] = [];
 
   constructor(
-    private patientsservice: PatientsService
-    ) {
-  }
+    private patientsservice: PatientsService,
+    private sharedService: SharedService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.displayAllPatients();
+  }
+
+  edit(patient: Patient): void {
+    this.sharedService.setSelectedPatient(patient);
+    this.router.navigate(['/admin/patient-edit']);
+  }
+
+  displayAllPatients(){
     this.patientsservice.getAllPatients()
     .subscribe({
       next: (patients) => {

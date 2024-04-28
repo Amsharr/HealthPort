@@ -23,6 +23,7 @@ export class AdminLoginComponent {
   onSubmit() {
     this.autheticationService.login(this.username,this.password,'api/Admin/login')
     .subscribe((response) => {
+      sessionStorage.setItem('username', response.username);
       this.router.navigate(['/admin-dashboard']);
     });
   }

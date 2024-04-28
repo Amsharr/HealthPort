@@ -10,9 +10,6 @@ import { PatientsService } from '../../../services/patients.service';
 export class PatientListComponent implements OnInit{
   patients: Patient[] = [];
 
-  /**
-   *
-   */
   constructor(
     private patientsservice: PatientsService
     ) {
@@ -28,5 +25,5 @@ export class PatientListComponent implements OnInit{
         console.log(response);
       }
     });
-}
+  }
 }

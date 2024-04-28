@@ -18,9 +18,12 @@ export class DoctorService {
     return this.http.get<Doctor[]>(this.baseApiUrl + '/api/Doctors');
   }
 
+  //add doctor 
   addDoctor(doctorRegistration: Doctor): Observable<Doctor> {
     return this.http.post<Doctor>(this.baseApiUrl + '/api/Doctors', doctorRegistration);
   }
+
+  //api to get specialities
 
   getAllSpecialities(): Observable<Speciality[]> {
     return this.http.get<Speciality[]>(this.baseApiUrl + '/api/Specialities');

@@ -32,6 +32,8 @@ import { CreateDocComponent } from './components/Admin/create-doc/create-doc.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
 import { Toast, ToastModule } from 'primeng/toast';
+import { CreateNurseComponent } from './components/Admin/create-nurse/create-nurse.component';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +58,7 @@ import { Toast, ToastModule } from 'primeng/toast';
     DoctorListComponent,
     CreatePatComponent,
     CreateDocComponent,
+    CreateNurseComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ import { Toast, ToastModule } from 'primeng/toast';
     MessagesModule,
     ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

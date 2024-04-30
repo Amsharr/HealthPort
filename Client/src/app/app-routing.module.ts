@@ -17,6 +17,7 @@ import { CreatePatComponent } from './components/Admin/create-pat/create-pat.com
 import { CreateDocComponent } from './components/Admin/create-doc/create-doc.component';
 import { CreateNurseComponent } from './components/Admin/create-nurse/create-nurse.component';
 import { DoctorListComponent } from './components/Admin/doctor-list/doctor-list.component';
+import { PatientEditComponent } from './components/Admin/patient-edit/patient-edit.component';
 
 const routes: Routes = [
   { 
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path:'admin/create-nurse-account',
     component: CreateNurseComponent
+  },
+  {
+    path:'admin/patient-edit',
+    component: PatientEditComponent
   }
 ];
 

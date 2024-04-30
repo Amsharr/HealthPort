@@ -34,6 +34,7 @@ import { MessagesModule } from 'primeng/messages';
 import { Toast, ToastModule } from 'primeng/toast';
 import { CreateNurseComponent } from './components/Admin/create-nurse/create-nurse.component';
 import { MessageService } from 'primeng/api';
+import { PatientEditComponent } from './components/Admin/patient-edit/patient-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { MessageService } from 'primeng/api';
     CreatePatComponent,
     CreateDocComponent,
     CreateNurseComponent,
+    PatientEditComponent,
   ],
   imports: [
     BrowserModule,

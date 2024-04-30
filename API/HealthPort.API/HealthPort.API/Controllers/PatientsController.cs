@@ -35,7 +35,7 @@ namespace HealthPort.API.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> login([FromBody] patLogin loginRequest)
+        public async Task<IActionResult> login([FromBody] Patients loginRequest)
         {
             var patient = await _hpDbcontext.Patients
                 .FirstOrDefaultAsync(p => p.username == loginRequest.username && p.password == loginRequest.password);
@@ -45,6 +45,41 @@ namespace HealthPort.API.Controllers
 
             return Ok(patient);
         }
+
+        [HttpPut]
+        [Route("update")]
+        public async Task<IActionResult> UpdatePatient([FromBody] Patients updateRequest)
+        {
+            
+            if (updateRequest.id == 0)
+            {
+                return BadRequest("Invalid patient ID");
+            }
+
+            var patient = await _hpDbcontext.Patients.FindAsync(updateRequest.id);
+
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
+
+            patient.id = updateRequest.id;
+            patient.firstName = updateRequest.firstName;
+            patient.lastName = updateRequest.lastName;
+            patient.dob = updateRequest.dob;
+            patient.nicNo = updateRequest.nicNo;
+            patient.mobileNo = updateRequest.mobileNo;
+            patient.email = updateRequest.email;
+            patient.address = updateRequest.address;
+            patient.username = updateRequest.username;
+            patient.password = updateRequest.password;
+
+            await _hpDbcontext.SaveChangesAsync();
+
+            return Ok(patient); 
+        }
+
 
     }
 }

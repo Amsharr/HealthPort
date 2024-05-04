@@ -9,12 +9,12 @@
                 <h1>Dashboard <i class="fa-solid fa-chart-line"></i></h1>
                 <div class="cards">
                     <div class="card" routerLink="/admin/patient-list">
-                        <p class="time-text"><span>4</span></p>
+                        <p class="time-text"><span>{{patientsCount}}</span></p>
                         <p class="day-text">View all Patients</p>
                         <i class="fa-solid fa-hospital-user icon"></i>
                     </div>
                     <div class="card" routerLink="/admin/doctor-list">
-                        <p class="time-text"><span>0</span></p>
+                        <p class="time-text"><span>{{doctorsCount}}</span></p>
                         <p class="day-text">View all Doctors</p>
                         <i class="fa-solid fa-user-doctor icon"></i>
                     </div>

@@ -4,28 +4,43 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Doctor } from '../Models/doctor.model';
 import { Speciality } from '../Models/speciality.model';
+import { APIService } from './api.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService {
+  endpoint: string = '/api/Doctors';
 
-  baseApiUrl: string = environment.baseApiUrl;
-  constructor(private http: HttpClient) { }
+  constructor(private apiService: APIService) { }
 
+  //get all doctors
   getAllDoctors(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(this.baseApiUrl + '/api/Doctors');
+    return this.apiService.get<Doctor>(this.endpoint);
   }
 
   //add doctor 
   addDoctor(doctorRegistration: Doctor): Observable<Doctor> {
-    return this.http.post<Doctor>(this.baseApiUrl + '/api/Doctors', doctorRegistration);
+    return this.apiService.post<Doctor>(this.endpoint,doctorRegistration);
+  }
+
+  //update doctor
+  editDoctor(updateDoctor: Doctor): Observable<Doctor>{
+    const updateEndpoint = this.endpoint + '/update'
+    return this.apiService.put<Doctor>(updateEndpoint,updateDoctor);
+  }
+
+  //delete doctor account
+  deleteDoctorById(doctorId: number): Observable<any> {
+    const deleteEndpoint = this.endpoint + '/delete';
+    return this.apiService.delete<any>(deleteEndpoint, doctorId);
   }
 
   //api to get specialities
-
   getAllSpecialities(): Observable<Speciality[]> {
-    return this.http.get<Speciality[]>(this.baseApiUrl + '/api/Specialities');
+    const specialityEndpoint = '/api/Specialities';
+    return this.apiService.get<Speciality>(specialityEndpoint);
   }
+
 }

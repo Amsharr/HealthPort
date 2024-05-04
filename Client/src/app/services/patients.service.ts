@@ -25,4 +25,10 @@ export class PatientsService {
     const updateEndpoint = this.endpoint + '/update'
     return this.apiService.put<Patient>(updateEndpoint,updatePatient)
   }
+
+  deletePatientById(patientId: number): Observable<any> {
+    const deleteEndpoint = this.endpoint + '/delete';
+    return this.apiService.delete<any>(deleteEndpoint, patientId);
+  }
+  
 }

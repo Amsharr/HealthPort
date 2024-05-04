@@ -1,0 +1,166 @@
+<app-navbar></app-navbar>
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+      <div class="col-2">
+        <app-side-panel></app-side-panel>
+      </div>
+      <div class="col py-3" style="margin-left: 230px">
+        <h1 style="color: white">
+          Edit Doctor Account <i class="fa-solid fa-user-doctor icon"></i>
+        </h1>
+        <br>
+        <form class="form-register" #form="ngForm" (ngSubmit)="updateDoctor(doctor)">
+          <div class="flex">
+            <div class="half-width">
+              <label>
+                <input
+                  class="input"
+                  type="text"
+                  id="FirstName"
+                  name="FirstName"
+                  [(ngModel)]="doctor.firstName"
+                  placeholder=""
+                  required=""
+                />
+                <span>First name *</span>
+              </label>
+            </div>
+            <div class="half-width">
+              <label>
+                <input
+                  class="input"
+                  type="text"
+                  id="LastName"
+                  name="LastName"
+                  [(ngModel)]="doctor.lastName"
+                  placeholder=""
+                  required=""
+                />
+                <span>Last name *</span>
+              </label>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="half-width">
+              <label>
+                <input
+                  class="input"
+                  type="date"
+                  id="DateOfBirth"
+                  [placeholder]="''"
+                  name="DateOfBirth"
+                  [(ngModel)]="doctor.dob"
+                  required=""
+                />
+                <span>Date of Birth *</span>
+              </label>
+            </div>
+            <div class="half-width">
+                <label>
+                    <p-dropdown
+                        name="specialityid"
+                        [options]="specialities"
+                        [(ngModel)]="doctor.specialityid"
+                        placeholder="Select a Speciality"
+                        [editable]="true"
+                        optionLabel="description"
+                        optionValue="id"
+                        (onChange)="onSpecialityChange($event.value)"
+                    ></p-dropdown>          
+                </label>              
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="half-width">
+              <label>
+                <input
+                  class="input"
+                  type="text"
+                  id="MobileNo"
+                  name="MobileNo"
+                  [(ngModel)]="doctor.mobileNo"
+                  placeholder=""
+                  required=""
+                />
+                <span>Mobile No *</span>
+              </label>
+            </div>
+            <div class="half-width">
+              <label>
+                <input
+                  class="input"
+                  type="text"
+                  id="NicNo"
+                  name="NicNo"
+                  [(ngModel)]="doctor.nicNo"
+                  placeholder=""
+                  required=""
+                />
+                <span>NIC No</span>
+              </label>
+            </div>
+          </div>
+          <label>
+            <input
+              class="input"
+              type="email"
+              id="Email"
+              name="Email"
+              [(ngModel)]="doctor.email"
+              placeholder=""
+              required=""
+            />
+            <span>Email</span>
+          </label>
+          <label>
+            <input
+              class="input"
+              type="text"
+              id="Address"
+              name="Address"
+              [(ngModel)]="doctor.address"
+              placeholder=""
+              required=""
+            />
+            <span>Address</span>
+          </label>
+
+          <div class="flex">
+            <div class="half-width">
+              <label>
+                <input
+                  class="input"
+                  type="text"
+                  id="Username"
+                  name="Username"
+                  [(ngModel)]="doctor.username"
+                  placeholder=""
+                  required=""
+                />
+                <span>Username *</span>
+              </label>
+            </div>
+            <div class="half-width">
+              <label>
+                <input
+                  class="input"
+                  type="password"
+                  id="Password"
+                  name="Password"
+                  [(ngModel)]="doctor.password"
+                  placeholder=""
+                  required=""
+                />
+                <span>Password *</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="submit">Create account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

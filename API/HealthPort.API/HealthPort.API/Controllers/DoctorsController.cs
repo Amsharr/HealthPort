@@ -45,5 +45,55 @@ namespace HealthPort.API.Controllers
 
             return Ok(doctor);
         }
+
+        [HttpPut]
+        [Route("update")]
+        public async Task<IActionResult> UpdateDoctor([FromBody] Doctors updateRequest)
+        {
+
+            if (updateRequest.id == 0)
+            {
+                return BadRequest("Invalid doctor ID");
+            }
+
+            var doctor = await _hpDbcontext.Doctors.FindAsync(updateRequest.id);
+
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+
+            doctor.id = updateRequest.id;
+            doctor.firstName = updateRequest.firstName;
+            doctor.lastName = updateRequest.lastName;
+            doctor.specialityid = updateRequest.specialityid;
+            doctor.dob = updateRequest.dob;
+            doctor.nicNo = updateRequest.nicNo;
+            doctor.mobileNo = updateRequest.mobileNo;
+            doctor.email = updateRequest.email;
+            doctor.address = updateRequest.address;
+            doctor.username = updateRequest.username;
+            doctor.password = updateRequest.password;
+
+            await _hpDbcontext.SaveChangesAsync();
+
+            return Ok(doctor);
+        }
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async Task<IActionResult> DeleteDoctor(int id)
+        {
+            var doctor = await _hpDbcontext.Doctors.FindAsync(id);
+
+            if (doctor == null)
+                return NotFound("doctor not found.");
+
+            _hpDbcontext.Doctors.Remove(doctor);
+            await _hpDbcontext.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }

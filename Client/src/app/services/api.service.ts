@@ -28,7 +28,8 @@ export class APIService {
   }
 
   // DELETE operation
-  delete<T>(endpoint: string): Observable<T> {
-    return this.http.delete<T>(this.baseApiUrl + endpoint);
+  delete<T>(endpoint: string, id: number): Observable<T> {
+    return this.http.delete<T>(this.baseApiUrl + `${endpoint}/${id}`);
   }
+  
 }

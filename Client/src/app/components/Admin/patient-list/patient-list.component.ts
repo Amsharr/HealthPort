@@ -13,7 +13,7 @@ export class PatientListComponent implements OnInit{
   patients: Patient[] = [];
 
   constructor(
-    private patientsservice: PatientsService,
+    private patientService: PatientsService,
     private sharedService: SharedService,
     private router: Router
   ) {}
@@ -28,8 +28,7 @@ export class PatientListComponent implements OnInit{
   }
 
   displayAllPatients(){
-    this.patientsservice.getAllPatients()
-    .subscribe({
+    this.patientService.getAllPatients().subscribe({
       next: (patients) => {
         this.patients = patients;
       },
@@ -38,4 +37,18 @@ export class PatientListComponent implements OnInit{
       }
     });
   }
+
+  deletePatient(patientId: number) {
+    console.log('Deleting patient...');
+    this.patientService.deletePatientById(patientId).subscribe({
+      next: () => {
+        this.ngOnInit();
+      },
+      error: (response) => {
+        console.error('Error deleting patient:', response);
+      }
+    });
+  }
+  
+
 }

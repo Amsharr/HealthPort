@@ -33,8 +33,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from 'primeng/messages';
 import { Toast, ToastModule } from 'primeng/toast';
 import { CreateNurseComponent } from './components/Admin/create-nurse/create-nurse.component';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { PatientEditComponent } from './components/Admin/patient-edit/patient-edit.component';
+import { DoctorEditComponent } from './components/Admin/doctor-edit/doctor-edit.component';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +63,7 @@ import { PatientEditComponent } from './components/Admin/patient-edit/patient-ed
     CreateDocComponent,
     CreateNurseComponent,
     PatientEditComponent,
+    DoctorEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,9 +75,10 @@ import { PatientEditComponent } from './components/Admin/patient-edit/patient-ed
     DropdownModule,
     BrowserAnimationsModule,
     MessagesModule,
-    ToastModule
+    ToastModule,
+    ConfirmPopupModule
   ],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

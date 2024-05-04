@@ -80,6 +80,21 @@ namespace HealthPort.API.Controllers
             return Ok(patient); 
         }
 
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async Task<IActionResult> DeletePatient(int id)
+        {
+            var patient = await _hpDbcontext.Patients.FindAsync(id);
+
+            if (patient == null)
+                return NotFound("Patient not found.");
+
+            _hpDbcontext.Patients.Remove(patient);
+            await _hpDbcontext.SaveChangesAsync();
+
+            return Ok("Patient deleted successfully.");
+        }
+
 
     }
 }

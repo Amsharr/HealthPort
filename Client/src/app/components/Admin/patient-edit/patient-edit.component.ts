@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Patient } from '../../../Models/patient.model';
 import { PatientsService } from '../../../services/patients.service';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './patient-edit.component.html',
   styleUrl: './patient-edit.component.scss'
 })
-export class PatientEditComponent {
+export class PatientEditComponent implements OnInit{
   
   patient: Patient = {
     id:0,
@@ -74,6 +74,5 @@ export class PatientEditComponent {
         console.log(response);
       }
     });;
-    
   }
 }

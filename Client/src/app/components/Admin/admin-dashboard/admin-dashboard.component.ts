@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from '../../../Models/patient.model';
 import { PatientsService } from '../../../services/patients.service';
 import { DoctorService } from '../../../services/doctor.service';
+import { NurseService } from '../../../services/nurse.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -17,12 +18,14 @@ export class AdminDashboardComponent implements OnInit{
 
   constructor(
     private patientsservice: PatientsService,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private nurseService: NurseService
   ) {}
 
   ngOnInit(): void {
     this.getPatientsCount();
     this.getDoctorsCount();
+    this.getNursesCount();
   }
 
   getPatientsCount(){
@@ -40,6 +43,17 @@ export class AdminDashboardComponent implements OnInit{
     this.doctorService.getAllDoctors().subscribe({
       next:(doctors) => {
         this.doctorsCount = doctors.length;
+      },
+      error: (response) => {
+        console.log(response);
+      }
+    })
+  }
+
+  getNursesCount(){
+    this.nurseService.getAllNurses().subscribe({
+      next:(nurses) => {
+        this.nurseCount = nurses.length;
       },
       error: (response) => {
         console.log(response);

@@ -19,6 +19,8 @@ import { CreateNurseComponent } from './components/Admin/create-nurse/create-nur
 import { DoctorListComponent } from './components/Admin/doctor-list/doctor-list.component';
 import { PatientEditComponent } from './components/Admin/patient-edit/patient-edit.component';
 import { DoctorEditComponent } from './components/Admin/doctor-edit/doctor-edit.component';
+import { NurseListComponent } from './components/Admin/nurse-list/nurse-list.component';
+import { NurseEditComponent } from './components/Admin/nurse-edit/nurse-edit.component';
 
 const routes: Routes = [
   { 
@@ -91,6 +93,14 @@ const routes: Routes = [
   {
     path:'admin/doctor-edit',
     component: DoctorEditComponent
+  },
+  {
+    path:'admin/nurse-list',
+    component: NurseListComponent
+  },
+  {
+    path:'admin/nurse-edit',
+    component: NurseEditComponent
   }
 ];
 

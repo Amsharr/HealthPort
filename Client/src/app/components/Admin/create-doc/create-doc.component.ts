@@ -58,11 +58,11 @@ export class CreateDocComponent implements OnInit {
     }
   }
 
-  addDoctor(){
+  addDoctor(){debugger
     this.doctorService.addDoctor(this.doctorRegistration)
     .subscribe({
-      next: (doctor) => {
-        this.router.navigate(['/admin/create-docaccount'])
+      next: () => {
+        this.router.navigate(['/admin-dashboard'])
       }
     })
   }

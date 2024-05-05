@@ -26,14 +26,13 @@
         <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
     </div>
     <div class="offcanvas-body">
-        <form class="form-register" #form="ngForm">
+        <form class="form-register" #form="ngForm" (submit)="submit()">
                 <label>
                     <input 
                     class="input" 
                     type="text" 
-                    id="speciality" 
-                    name="speciality"
-                    placeholder="" 
+                    id="firstName" 
+                    name="firstName"
                     required="">
                     <span>Patient name</span>
                 </label>
@@ -63,16 +62,31 @@
                     </label>
                 </div>
             </div>
+            <div class="half-width">
                 <label>
                     <input 
                     class="input" 
                     type="date" 
-                    id="DateOfBirth"
+                    id="date"
                     [placeholder]="''" 
-                    name="DateOfBirth"
+                    name="date"
                     required="">
                     <span>Date *</span>
-                </label>    
+                </label>  
+            </div>
+            <div class="half-width">
+                <label>
+                    <input 
+                    class="input" 
+                    type="time" 
+                    id="time"
+                    [placeholder]="''" 
+                    name="time"
+                    required="">
+                    <span>Date *</span>
+                </label>  
+            </div>
+                  
             <button class="submit">Book Appointment</button>
         </form>   
     </div>

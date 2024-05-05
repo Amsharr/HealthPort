@@ -8,7 +8,7 @@
         <div class="col py-3" style="margin-left: 230px;">
           <h1 style="color: white;"> Doctors   <i class="fa-solid fa-user-doctor icon"></i></h1>
 
-          <app-advance-search></app-advance-search>
+          <app-advance-search (doctors)="receiveDoctorsData($event)"></app-advance-search>
 
           <table class="table">
               <thead>

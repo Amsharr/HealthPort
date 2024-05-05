@@ -1,4 +1,5 @@
 ﻿using HealthPort.API.Data;
+using HealthPort.API.DTO;
 using HealthPort.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -93,6 +94,46 @@ namespace HealthPort.API.Controllers
             await _hpDbcontext.SaveChangesAsync();
 
             return Ok("Patient deleted successfully.");
+        }
+
+        [HttpPost]
+        [Route("search")]
+        public async Task<IActionResult> SearchDoctors([FromBody] SearchDto filter)
+        {
+            var query = _hpDbcontext.Patients.AsQueryable();
+
+            if (filter.id.HasValue)
+            {
+                query = query.Where(d => d.id == filter.id);
+            }
+            if (!string.IsNullOrEmpty(filter.firstName))
+            {
+                query = query.Where(d => d.firstName.Contains(filter.firstName));
+            }
+            if (!string.IsNullOrEmpty(filter.lastName))
+            {
+                query = query.Where(d => d.lastName.Contains(filter.lastName));
+            }
+            if (!string.IsNullOrEmpty(filter.nicNo))
+            {
+                query = query.Where(d => d.nicNo == filter.nicNo);
+            }
+            if (!string.IsNullOrEmpty(filter.mobileNo))
+            {
+                query = query.Where(d => d.mobileNo == filter.mobileNo);
+            }
+            if (!string.IsNullOrEmpty(filter.email))
+            {
+                query = query.Where(d => d.email == filter.email);
+            }
+            if (!string.IsNullOrEmpty(filter.username))
+            {
+                query = query.Where(d => d.username == filter.username);
+            }
+
+            var patients = await query.ToListAsync();
+
+            return Ok(patients);
         }
 
 

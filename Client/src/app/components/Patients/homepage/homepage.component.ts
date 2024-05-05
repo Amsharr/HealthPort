@@ -7,11 +7,19 @@ import { NgbDateStruct, NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent {
+
   model: NgbDateStruct | undefined;
   private offcanvasService = inject(NgbOffcanvas);
+
+  constructor() {
+    
+  }
 
 	openEnd(content: TemplateRef<any>) {
 		this.offcanvasService.open(content, { position: 'end' });
   }
 	
+  submit(){
+    this
+  }
 }

@@ -5,37 +5,49 @@
     </div>
 
     <div class="inputGroup">
-        <input type="text" required="" >
+        <input type="text" required="" [(ngModel)]="filter.firstName">
         <label for="firstName">First Name</label>
     </div>
 
     <div class="inputGroup">
-        <input type="text" required="" >
+        <input type="text" required="" [(ngModel)]="filter.lastName">
         <label for="lastName">Last Name</label>
     </div>
 
     <div class="inputGroup">
-        <input type="text" required="" >
+        <input type="text" required="" [(ngModel)]="filter.nicNo">
         <label for="name">NIC no.</label>
     </div>
 
     <div class="inputGroup">
-        <input type="text" required="" >
+        <input type="text" required="" [(ngModel)]="filter.mobileNo">
         <label for="name">Mobile no.</label>
     </div>
 
     <div class="inputGroup">
-        <input type="text" required="" >
+        <input type="text" required="" [(ngModel)]="filter.email">
         <label for="name">Email</label>
     </div>
 
     <div class="inputGroup">
-        <input type="text" required="" >
+        <input type="text" required="" [(ngModel)]="filter.username">
         <label for="name">Username</label>
     </div>
 
+    <div class="inputGroup" *ngIf="searchType =='doctor'">
+        <p-dropdown
+            [options]="specialities"
+            [(ngModel)]="filter.specialityid"
+            placeholder="Speciality"
+            [editable]="true"
+            optionLabel="description"
+            optionValue="id"
+            (onChange)="onSpecialityChange($event.value)"
+        ></p-dropdown>  
+    </div>
+
     <div class="inputGroup">
-        <button class="button">
+        <button class="button" (click)="search()">
             🔎 Search
          </button>
     </div>

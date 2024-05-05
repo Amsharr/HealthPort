@@ -2,6 +2,11 @@ $input-color: rgb(255, 255, 255);
 $label-color: rgb(255, 252, 252);
 $background-focus: #0c4cc4;
 
+.p-dropdown .p-dropdown-label.p-placeholder {
+  color: #6b7280;
+  height: 37px;
+}
+
 .inputGroup {
     font-family: 'Segoe UI', sans-serif;
     margin: 1em 0 1em 0;

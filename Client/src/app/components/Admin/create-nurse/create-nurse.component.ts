@@ -25,9 +25,7 @@ export class CreateNurseComponent {
   constructor(
     private nurseService : NurseService,
     private router: Router
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit(): void {
   }
@@ -35,7 +33,7 @@ export class CreateNurseComponent {
   addNurse(){
     this.nurseService.addNurse(this.nurseRegistration)
     .subscribe({
-      next: (nurse) => {
+      next: () => {
         this.router.navigate(['/admin-dashboard']);
       }
     })

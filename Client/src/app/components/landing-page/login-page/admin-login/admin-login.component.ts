@@ -27,9 +27,4 @@ export class AdminLoginComponent {
       this.router.navigate(['/admin-dashboard']);
     });
   }
-
-  private handleError(error: HttpErrorResponse) {
-    console.error('Login failed:', error);
-    return throwError('Something went wrong. Please try again later.');
-  }
 }

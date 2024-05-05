@@ -4,6 +4,7 @@ import { Patient } from '../../../Models/patient.model';
 import { PatientsService } from '../../../services/patients.service';
 import { SharedService } from '../../../services/shared.service';
 import { Subscription } from 'rxjs';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-patient-edit',
@@ -29,32 +30,15 @@ export class PatientEditComponent implements OnInit{
 
   constructor(
     private patientService: PatientsService,
-    private shared : SharedService,
+    private dataService: DataService,
     private router: Router
   ) {}
 
 
   ngOnInit(): void {
-    this.populateForm();
-  }
-
-  populateForm(){
-    const storedPatientData = localStorage.getItem('patient');
-    
-    if (storedPatientData) {
-      this.patient = JSON.parse(storedPatientData);
-    } 
-    else {
-      if(this.subscription){
-        this.subscription.unsubscribe();
-      }
-      this.subscription = this.shared.getSelectedPatient().subscribe(response => {
-        if(response){
-          this.patient = response;
-          localStorage.setItem('patient', JSON.stringify(response));
-        }
-      });
-    }
+    this.dataService.populateForm<Patient>('patient').subscribe((response) => {
+      this.patient = response;
+    });
   }
 
   ngOnDestroy(): void{

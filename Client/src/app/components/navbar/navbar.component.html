@@ -80,11 +80,15 @@
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
         </button>       
       </div>
-      <div *ngIf="menuType==='admin'">
-        <button class="btn-login" type="submit" >
+      <div ngbDropdown class="d-inline-block" *ngIf="menuType==='admin'">
+        <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
-        </button>       
-      </div>            
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
+          <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
+        </div>
+      </div>           
     </div>
   </nav>  
 

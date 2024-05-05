@@ -3,6 +3,7 @@ import { Patient } from '../../../Models/patient.model';
 import { PatientsService } from '../../../services/patients.service';
 import { SharedService } from '../../../services/shared.service';
 import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-patient-list',
@@ -15,11 +16,17 @@ export class PatientListComponent implements OnInit{
   constructor(
     private patientService: PatientsService,
     private sharedService: SharedService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.displayAllPatients();
+    this.receivePatientsData(this.patients);
+  }
+
+  receivePatientsData(patients: Patient[]) {
+    this.patients = patients; 
   }
 
   edit(patient: Patient): void {
@@ -27,28 +34,27 @@ export class PatientListComponent implements OnInit{
     this.router.navigate(['/admin/patient-edit']);
   }
 
-  displayAllPatients(){
-    this.patientService.getAllPatients().subscribe({
-      next: (patients) => {
-        this.patients = patients;
-      },
-      error: (response) => {
-        console.log(response);
-      }
-    });
-  }
-
   deletePatient(patientId: number) {
-    console.log('Deleting patient...');
     this.patientService.deletePatientById(patientId).subscribe({
       next: () => {
-        this.ngOnInit();
+        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
       },
       error: (response) => {
         console.error('Error deleting patient:', response);
       }
     });
   }
-  
 
+  confirmModal(event: Event, patientId: number) {debugger
+    this.confirmationService.confirm({
+        target: event.target as EventTarget,
+        message: 'Do you want to delete this record?',
+        icon: 'pi pi-info-circle',
+        acceptButtonStyleClass: 'p-button-danger p-button-sm',
+        accept: () => {
+          this.deletePatient(patientId);   
+          this.ngOnInit();         
+        }
+    });
+  }
 }

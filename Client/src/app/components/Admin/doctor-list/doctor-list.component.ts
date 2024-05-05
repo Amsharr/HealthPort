@@ -26,21 +26,14 @@ export class DoctorListComponent {
   ngOnInit(): void {
     localStorage.removeItem('doctor');
     localStorage.removeItem('patient');
-    this.loadDoctors();
+    this.receiveDoctorsData(this.doctors);
     this.loadSpecialties();
   }
 
-  loadDoctors() {
-    this.doctorService.getAllDoctors().subscribe({
-      next: (doctors) => {
-        this.doctors = doctors;
-      },
-      error: (response) => {
-        console.log(response);
-      }
-    });
+  receiveDoctorsData(doctors: Doctor[]) {
+    this.doctors = doctors; 
   }
-
+  
   loadSpecialties() {
     this.doctorService.getAllSpecialities().subscribe(specialties => {
         this.specialties = specialties;
@@ -61,7 +54,6 @@ export class DoctorListComponent {
     this.doctorService.deleteDoctorById(doctorId).subscribe({
       next: () => {
         this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
-        
       },
       error: (response) => {
         console.error('Error deleting patient:', response);
@@ -80,5 +72,5 @@ export class DoctorListComponent {
           this.ngOnInit();         
         }
     });
-}
+  }
 }

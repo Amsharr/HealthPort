@@ -1,4 +1,5 @@
 ﻿using HealthPort.API.Data;
+using HealthPort.API.DTO;
 using HealthPort.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -95,5 +96,50 @@ namespace HealthPort.API.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        [Route("search")]
+        public async Task<IActionResult> SearchDoctors([FromBody] SearchDto filter)
+        {
+            var query = _hpDbcontext.Doctors.AsQueryable();
+
+            if (filter.id.HasValue)
+            {
+                query = query.Where(d => d.id == filter.id);
+            }
+            if (!string.IsNullOrEmpty(filter.firstName))
+            {
+                query = query.Where(d => d.firstName.Contains(filter.firstName));
+            }
+            if (!string.IsNullOrEmpty(filter.lastName))
+            {
+                query = query.Where(d => d.lastName.Contains(filter.lastName));
+            }
+            if (!string.IsNullOrEmpty(filter.nicNo))
+            {
+                query = query.Where(d => d.nicNo == filter.nicNo);
+            }
+            if (!string.IsNullOrEmpty(filter.mobileNo))
+            {
+                query = query.Where(d => d.mobileNo == filter.mobileNo);
+            }
+            if (!string.IsNullOrEmpty(filter.email))
+            {
+                query = query.Where(d => d.email == filter.email);
+            }
+            if (!string.IsNullOrEmpty(filter.username))
+            {
+                query = query.Where(d => d.username == filter.username);
+            }
+            if (filter.specialityid.HasValue)
+            {
+                query = query.Where(d => d.specialityid == filter.specialityid);
+            }
+
+            var doctors = await query.ToListAsync();
+
+            return Ok(doctors);
+        }
+
     }
 }

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingPageComponent } from './components/landing-page/Landing page/landing-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SelectUserComponent } from './components/landing-page/login-page/select-user/select-user/select-user.component';
@@ -37,6 +37,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { PatientEditComponent } from './components/Admin/patient-edit/patient-edit.component';
 import { DoctorEditComponent } from './components/Admin/doctor-edit/doctor-edit.component';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { NurseListComponent } from './components/Admin/nurse-list/nurse-list.component';
+import { NurseEditComponent } from './components/Admin/nurse-edit/nurse-edit.component';
+import { MyProfileAdminComponent } from './components/Admin/account/my-profile-admin/my-profile-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +67,9 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     CreateNurseComponent,
     PatientEditComponent,
     DoctorEditComponent,
+    NurseListComponent,
+    NurseEditComponent,
+    MyProfileAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +82,8 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     BrowserAnimationsModule,
     MessagesModule,
     ToastModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    NgbDropdownModule
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent],

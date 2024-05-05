@@ -10,14 +10,21 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 export class NavbarComponent implements OnInit {
 menuType:String = 'default';
 username: string = '';
+
 private offcanvasService = inject(NgbOffcanvas);
-  constructor(private router: Router) { }
+  
+constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.setNavType();
     this.username = sessionStorage.getItem('username') ?? '';
   }
 
+  logout(){
+    this.router.navigate(['/landing-page']);
+    sessionStorage.removeItem('username');
+  }
+  
   private setNavType(): void {
     const currentUrl: string = this.router.url;
     if (currentUrl.includes('landing-page')) {

@@ -58,7 +58,7 @@ export class CreateDocComponent implements OnInit {
     }
   }
 
-  addDoctor(){debugger
+  addDoctor(){
     this.doctorService.addDoctor(this.doctorRegistration)
     .subscribe({
       next: () => {

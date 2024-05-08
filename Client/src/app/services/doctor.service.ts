@@ -43,4 +43,10 @@ export class DoctorService {
     return this.apiService.get<Speciality>(specialityEndpoint);
   }
 
+  getDoctorBySpeciality(specialityId: number): Observable<Doctor[]> {
+    const getDoctorBySpecialityEndpoint = `${this.endpoint}/getDoctorBySpeciality/${specialityId}`;
+    return this.apiService.get<Doctor>(getDoctorBySpecialityEndpoint);
+  }
+  
+
 }

@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { catchError, finalize, throwError } from 'rxjs';
 import { AuthenticationService } from '../../../../services/authentication.service';
 
 @Component({

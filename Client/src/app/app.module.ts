@@ -19,7 +19,6 @@ import { CalendarModule } from 'primeng/calendar';
 import { FacilitiesComponent } from './components/landing-page/facilities/facilities.component';
 import { AboutComponent } from './components/landing-page/about/about.component';
 import { HomepageComponent } from './components/Patients/homepage/homepage.component';
-import { BookAppointmentsComponent } from './components/appointments/book-appointments/book-appointments.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { AdminDashboardComponent } from './components/Admin/admin-dashboard/admin-dashboard.component';
 import { HomeComponent } from './components/landing-page/home/home.component';
@@ -40,6 +39,12 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { NurseListComponent } from './components/Admin/nurse-list/nurse-list.component';
 import { NurseEditComponent } from './components/Admin/nurse-edit/nurse-edit.component';
 import { MyProfileAdminComponent } from './components/Admin/account/my-profile-admin/my-profile-admin.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { AppointmentComponent } from './components/Patients/appointment/appointment.component';
+import { TableModule } from 'primeng/table';
+import { CommonModule } from '@angular/common';
+import { SplitterModule } from 'primeng/splitter';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +60,6 @@ import { MyProfileAdminComponent } from './components/Admin/account/my-profile-a
     FacilitiesComponent,
     AboutComponent,
     HomepageComponent,
-    BookAppointmentsComponent,
     AdminDashboardComponent,
     HomeComponent,
     PatientListComponent,
@@ -70,6 +74,7 @@ import { MyProfileAdminComponent } from './components/Admin/account/my-profile-a
     NurseListComponent,
     NurseEditComponent,
     MyProfileAdminComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +88,12 @@ import { MyProfileAdminComponent } from './components/Admin/account/my-profile-a
     MessagesModule,
     ToastModule,
     ConfirmPopupModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    RadioButtonModule,
+    TableModule, 
+    CommonModule,
+    SplitterModule,
+    TabsModule
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent],

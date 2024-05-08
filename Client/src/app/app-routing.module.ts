@@ -9,7 +9,6 @@ import { AdminLoginComponent } from './components/landing-page/login-page/admin-
 import { PatRegistrationComponent } from './components/Patients/account/pat-registration/pat-registration.component';
 import { FacilitiesComponent } from './components/landing-page/facilities/facilities.component';
 import { HomepageComponent } from './components/Patients/homepage/homepage.component';
-import { BookAppointmentsComponent } from './components/appointments/book-appointments/book-appointments.component';
 import { AdminDashboardComponent } from './components/Admin/admin-dashboard/admin-dashboard.component';
 import { PatAccountComponent } from './components/Patients/account/pat-account/pat-account.component';
 import { PatientListComponent } from './components/Admin/patient-list/patient-list.component';
@@ -21,6 +20,7 @@ import { PatientEditComponent } from './components/Admin/patient-edit/patient-ed
 import { DoctorEditComponent } from './components/Admin/doctor-edit/doctor-edit.component';
 import { NurseListComponent } from './components/Admin/nurse-list/nurse-list.component';
 import { NurseEditComponent } from './components/Admin/nurse-edit/nurse-edit.component';
+import { AppointmentComponent } from './components/Patients/appointment/appointment.component';
 
 const routes: Routes = [
   { 
@@ -56,9 +56,6 @@ const routes: Routes = [
   },
   { path:'homepage',
     component: HomepageComponent
-  },
-  { path:'homepage/book-appointment',
-    component: BookAppointmentsComponent
   },
   { path:'admin-dashboard',
     component: AdminDashboardComponent
@@ -101,6 +98,10 @@ const routes: Routes = [
   {
     path:'admin/nurse-edit',
     component: NurseEditComponent
+  },
+  {
+    path:'homepage/my-appointments',
+    component: AppointmentComponent
   }
 ];
 

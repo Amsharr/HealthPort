@@ -4,6 +4,7 @@ using HealthPort.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthPort.API.Migrations
 {
     [DbContext(typeof(hpDbcontext))]
-    partial class hpDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20240507033317_made_fullN_optional")]
+    partial class made_fullN_optional
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,9 +55,6 @@ namespace HealthPort.API.Migrations
                     b.Property<DateOnly>("date")
                         .HasColumnType("date");
 
-                    b.Property<string>("doctorName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("doctorid")
                         .HasColumnType("int");
 
@@ -65,9 +65,6 @@ namespace HealthPort.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("paymentMethod")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("paymentStatus")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("paymentid")

@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<br>
+<p-toast />
+<body>    
+    <div>
+        <tabset>
+            <tab>
+            <ng-template tabHeading>
+                <span style="color: black;">Upcoming Appointments   <i class="fa-solid fa-calendar-check"></i></span>
+            </ng-template>
+            <div class="container">
+            <h1>Upcoming appointmnets</h1>
+            <p-table 
+                [value]="UpcomingAppointments" 
+                styleClass="p-datatable-gridlines" 
+                [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Appointment Id</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-appointment>
+                    <tr>
+                        <td>{{ appointment.id }}</td>
+                        <td>{{ appointment.doctorName }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.time }}</td>
+                        <td style="justify-content: center;">
+                            <p-toast />
+                            <p-confirmPopup />
+                            <p-button label="Cancel" (click)="confirmModal($event,appointment.id)"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+            
+        </div>
+    </tab>
+          <tab>
+            <ng-template tabHeading>
+                <span style="color: black;">Past Appointments   <i class="fa-solid fa-calendar-check"></i></span>
+            </ng-template>
+            <div class="container">
+                <h1>Past appointmnets</h1>
+                <p-table 
+                    [value]="PastAppointments" 
+                    styleClass="p-datatable-gridlines" 
+                    [tableStyle]="{ 'min-width': '50rem' }">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Appointment Id</th>
+                                <th>Doctor</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Action</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-appointment>
+                            <tr>
+                                <td>{{ appointment.id }}</td>
+                                <td>{{ appointment.doctorName }}</td>
+                                <td>{{ appointment.date }}</td>
+                                <td>{{ appointment.time }}</td>
+                                <td style="justify-content: center;">
+                                    <p-toast />
+                                    <p-confirmPopup />
+                                    <p-button label="Cancel" (click)="confirmModal($event,appointment.id)"></p-button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                </p-table>
+            </div>
+          </tab>
+        </tabset>
+    </div>
+</body>

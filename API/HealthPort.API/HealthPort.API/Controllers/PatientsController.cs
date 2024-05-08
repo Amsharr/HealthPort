@@ -22,7 +22,12 @@ namespace HealthPort.API.Controllers
         {
           var patients = await _hpDbcontext.Patients.ToListAsync();
 
-          return Ok(patients);
+            foreach (var patient in patients)
+            {
+                patient.fullName = $"{patient.firstName} {patient.lastName}";
+            }
+
+            return Ok(patients);
         }
 
         [HttpPost]
@@ -40,6 +45,8 @@ namespace HealthPort.API.Controllers
         {
             var patient = await _hpDbcontext.Patients
                 .FirstOrDefaultAsync(p => p.username == loginRequest.username && p.password == loginRequest.password);
+
+            patient.fullName = $"{patient.firstName} {patient.lastName}";
 
             if (patient == null)
                 return NotFound("Invalid username or password.");

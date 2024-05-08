@@ -1,9 +1,7 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, finalize } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { environment } from '../../../../../../environments/environment';
 import { MessageService } from 'primeng/api';
 import { AuthenticationService } from '../../../../../services/authentication.service';
 
@@ -11,7 +9,6 @@ import { AuthenticationService } from '../../../../../services/authentication.se
   selector: 'app-patient-login',
   templateUrl: './patient-login.component.html',
   styleUrl: './patient-login.component.scss',
-  providers: [MessageService],
 })
 export class PatientLoginComponent {
   username: string = '';
@@ -23,15 +20,12 @@ export class PatientLoginComponent {
   ) {}
 
   onSubmit() {
-    this.authenticationService.login(this.username, this.password, '/api/Patients/login')
+    this.authenticationService.login(this.username,this.password,'api/Patients/login')
     .subscribe((response) => {
       sessionStorage.setItem('username', response.username);
+      sessionStorage.setItem('patientId', response.id);
+      sessionStorage.setItem('fullname', response.fullName);
       this.router.navigate(['/homepage']);
     });
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    console.error('Login failed:', error);
-    return throwError('Something went wrong. Please try again later.');
   }
 }

@@ -3,6 +3,7 @@ using HealthPort.API.DTO;
 using HealthPort.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 
 namespace HealthPort.API.Controllers
 {
@@ -25,9 +26,24 @@ namespace HealthPort.API.Controllers
             return Ok(doctors);
         }
 
+        [HttpGet]
+        [Route("getDoctorBySpeciality/{specialityId}")]
+        public async Task<IActionResult> GetAllDoctorsBySpecialityId(int specialityId)
+        {
+            var doctors = await _hpDbcontext.Doctors.Where(x => x.specialityid == specialityId).ToListAsync();
+
+            //foreach(var doctor in doctors)
+            //{
+            //    doctor.fullName = (doctor.fullName != null) ? doctor.fullName : $"{doctor.firstName} {doctor.lastName}";
+            //}
+
+            return Ok(doctors);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddDoctor([FromBody] Doctors doctorsRequest)
         {
+            doctorsRequest.fullName = $"{doctorsRequest.firstName} {doctorsRequest.lastName}";
             await _hpDbcontext.Doctors.AddAsync(doctorsRequest);
             await _hpDbcontext.SaveChangesAsync();
 

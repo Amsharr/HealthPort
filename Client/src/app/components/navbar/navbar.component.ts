@@ -23,6 +23,8 @@ constructor(private router: Router) { }
   logout(){
     this.router.navigate(['/landing-page']);
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('patientId');
+    sessionStorage.removeItem('fullname', );
   }
   
   private setNavType(): void {
@@ -41,9 +43,5 @@ constructor(private router: Router) { }
     else {
       this.menuType = 'default';
     }
-  }
-
-  openEnd(content: TemplateRef<any>) {
-		this.offcanvasService.open(content, { position: 'end' });
   }
 }

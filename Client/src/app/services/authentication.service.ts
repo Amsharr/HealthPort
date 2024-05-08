@@ -40,7 +40,6 @@ export class AuthenticationService {
 
   //error message to displayed if username or password is incorrect
   private handleError(error: HttpErrorResponse) {
-    console.error('Login failed:', error);
     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Incorrect password or username. Try again' });
   }
 

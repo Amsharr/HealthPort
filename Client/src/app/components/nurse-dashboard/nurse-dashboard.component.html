@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2">
+            <app-side-panel></app-side-panel>
+        </div>
+        <div class="col py-3" style="margin-left: 230px;">
+          <h1 style="color: white;"> Upload Files   <i class="fa-solid fa-user-doctor icon"></i></h1>
+            <br>
+            <h3 style="color: white;">Search for Patient</h3>
+          <app-advance-search></app-advance-search>
+
+          <div class="container">
+            <p-table 
+                [value]="patients" 
+                styleClass="p-datatable-gridlines" 
+                [tableStyle]="{ 'min-width': '50rem' }">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Patient Id</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-patient>
+                        <tr>
+                            <td>{{ patient.id }}</td>
+                            <td>{{ patient.fullName }}</td>
+                            <td style="justify-content: center;">
+                              <p-fileUpload 
+                              mode="basic" 
+                              name="file" 
+                              chooseIcon="pi pi-upload" 
+                              url="https://localhost:7124/api/MedicalFiles/upload" 
+                              method="post"
+                              accept="application/pdf"
+                              (onUpload)="onBasicUploadAuto($event, patient)" 
+                              [auto]="true" 
+                              chooseLabel="Browse" />
+                            </td>
+                        </tr>
+                    </ng-template>
+            </p-table>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+

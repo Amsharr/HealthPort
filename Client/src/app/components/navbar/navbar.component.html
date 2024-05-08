@@ -3,6 +3,7 @@
       <img *ngIf="menuType==='landing-page'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="">
       <img *ngIf="menuType==='homepage'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/homepage">
       <img *ngIf="menuType==='admin'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/admin-dashboard">
+      <img *ngIf="menuType==='nurse'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/nurse/dashboard">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -92,6 +93,15 @@
           <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
           <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
         </div>
-      </div>           
+      </div>  
+      <div ngbDropdown class="d-inline-block" *ngIf="menuType==='nurse'">
+        <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
+          <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
+          <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
+        </div>
+      </div>          
     </div>
   </nav>  

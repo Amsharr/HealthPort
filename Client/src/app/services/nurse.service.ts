@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Nurse } from '../Models/nurse.model';
 import { APIService } from './api.service';
+import { Patient } from '../Models/patient.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,10 @@ export class NurseService {
   deleteNurseById(nurseId: number): Observable<any> {
     const deleteEndpoint = this.endpoint + '/delete';
     return this.apiService.delete<any>(deleteEndpoint, nurseId);
+  }
+
+  getPatientsByNurseId(nurseId: number): Observable<any>{
+    const getEndpoint = `${this.endpoint}/getPatients/${nurseId}`;
+    return this.apiService.get<any>(getEndpoint);
   }
 }

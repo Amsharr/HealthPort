@@ -20,6 +20,8 @@ namespace HealthPort.API.Data
 
         public DbSet<DoctorSchedule> DoctorSchedule { get; set; }
 
+        public DbSet<MedicalFiles> MedicalFiles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Doctors>()

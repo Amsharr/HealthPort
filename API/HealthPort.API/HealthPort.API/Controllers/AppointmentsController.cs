@@ -92,10 +92,20 @@ namespace HealthPort.API.Controllers
         }
 
         [HttpGet]
-        [Route("getAppointmentBy/{patientId}")]
+        [Route("getAppointmentByPid/{patientId}")]
         public async Task<IActionResult> GetAllAppointmentsByPatientId(int patientId)
         {
             var appointments = await _hpDbcontext.Appointments.Where(x => x.patientId == patientId).ToListAsync();
+
+            return Ok(appointments);
+        }
+
+
+        [HttpGet]
+        [Route("getAppointmentByDid/{doctorId}")]
+        public async Task<IActionResult> GetAllAppointmentsByDoctorId(int doctorId)
+        {
+            var appointments = await _hpDbcontext.Appointments.Where(x => x.doctorid == doctorId).ToListAsync();
 
             return Ok(appointments);
         }

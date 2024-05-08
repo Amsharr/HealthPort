@@ -45,6 +45,8 @@ import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { SplitterModule } from 'primeng/splitter';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { NurseDashboardComponent } from './components/nurse-dashboard/nurse-dashboard.component';
+import { FileUploadModule } from 'primeng/fileupload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +76,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     NurseListComponent,
     NurseEditComponent,
     MyProfileAdminComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    NurseDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +96,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     TableModule, 
     CommonModule,
     SplitterModule,
-    TabsModule
+    TabsModule,
+    FileUploadModule
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent],

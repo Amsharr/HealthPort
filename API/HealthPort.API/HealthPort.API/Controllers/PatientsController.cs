@@ -143,6 +143,21 @@ namespace HealthPort.API.Controllers
             return Ok(patients);
         }
 
+        [HttpGet]
+        [Route("getPatientsByDid")]
+        public async Task<IActionResult> getPatientsByDoctorId(int doctorId)
+        {
+            var appointments = await _hpDbcontext.Appointments.Where(x => x.doctorid == doctorId).ToListAsync();
+
+            List<Patients> patients = new List<Patients>();
+
+            foreach (var appointment in appointments)
+            {
+                patients = _hpDbcontext.Patients.Where(x => x.id == appointment.patientId).ToList();
+            }
+
+            return Ok(patients);
+        }
 
     }
 }

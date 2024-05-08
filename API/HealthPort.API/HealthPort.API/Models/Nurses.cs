@@ -14,5 +14,6 @@ namespace HealthPort.API.Models
         public string address { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public int? doctorId { get; set; }
     }
 }

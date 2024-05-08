@@ -21,6 +21,7 @@ import { DoctorEditComponent } from './components/Admin/doctor-edit/doctor-edit.
 import { NurseListComponent } from './components/Admin/nurse-list/nurse-list.component';
 import { NurseEditComponent } from './components/Admin/nurse-edit/nurse-edit.component';
 import { AppointmentComponent } from './components/Patients/appointment/appointment.component';
+import { NurseDashboardComponent } from './components/nurse-dashboard/nurse-dashboard.component';
 
 const routes: Routes = [
   { 
@@ -102,6 +103,10 @@ const routes: Routes = [
   {
     path:'homepage/my-appointments',
     component: AppointmentComponent
+  },
+  {
+    path:'nurse/dashboard',
+    component: NurseDashboardComponent
   }
 ];
 

@@ -18,10 +18,11 @@ export class NurseLoginComponent {
   ){}
 
   onSubmit() {
-    this.autheticationService.login(this.username,this.password,'api/Nurse/login')
+    this.autheticationService.login(this.username,this.password,'api/Nurses/login')
     .subscribe((response) => {
       sessionStorage.setItem('username', response.username);
-      // this.router.navigate(['/admin-dashboard']);
+      sessionStorage.setItem('nurseId', response.id);
+      this.router.navigate(['/nurse/dashboard']);
     });
   }
 }

@@ -4,6 +4,7 @@ using HealthPort.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthPort.API.Migrations
 {
     [DbContext(typeof(hpDbcontext))]
-    partial class hpDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20240508093847_file_upload")]
+    partial class file_upload
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,19 +178,37 @@ namespace HealthPort.API.Migrations
 
             modelBuilder.Entity("HealthPort.API.Models.MedicalFiles", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<byte[]>("Content")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<DateOnly>("dateUploaded")
+                        .HasColumnType("date");
 
-                    b.Property<string>("FileName")
+                    b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<byte[]>("file")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("nurseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("patientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("patietnName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("reportType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("uploadedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
 
                     b.ToTable("MedicalFiles");
                 });
@@ -205,9 +226,6 @@ namespace HealthPort.API.Migrations
 
                     b.Property<DateOnly>("dob")
                         .HasColumnType("date");
-
-                    b.Property<int?>("doctorId")
-                        .HasColumnType("int");
 
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");

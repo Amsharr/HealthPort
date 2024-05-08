@@ -40,6 +40,10 @@ constructor(private router: Router) { }
     {
       this.menuType = 'admin'
     }
+    else if (currentUrl.includes('nurse'))
+      {
+        this.menuType = 'nurse'
+      }
     else {
       this.menuType = 'default';
     }

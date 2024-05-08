@@ -18,7 +18,7 @@ namespace HealthPort.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllDoctors()
+        public async Task<IActionResult> GetAllNurses()
         {
             var nurses = await _hpDbcontext.Nurses.ToListAsync();
 
@@ -48,7 +48,7 @@ namespace HealthPort.API.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<IActionResult> UpdateDoctor([FromBody] Nurses updateRequest)
+        public async Task<IActionResult> UpdateNurse([FromBody] Nurses updateRequest)
         {
 
             if (updateRequest.id == 0)
@@ -133,6 +133,20 @@ namespace HealthPort.API.Controllers
             var nurses = await query.ToListAsync();
 
             return Ok(nurses);
+        }
+
+        [HttpGet]
+        [Route("getPatients/{nurseId}")]
+        public async Task<IActionResult> getPatientsByNurseId(int nurseId)
+        {
+
+            var patients = await (from appointment in _hpDbcontext.Appointments
+                                  join nurse in _hpDbcontext.Nurses on appointment.doctorid equals nurse.doctorId
+                                  join patient in _hpDbcontext.Patients on appointment.patientId equals patient.id
+                                  where nurse.id == nurseId
+                                  select patient).ToListAsync();
+
+            return Ok(patients);
         }
     }
 }

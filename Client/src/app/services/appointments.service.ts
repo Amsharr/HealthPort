@@ -26,7 +26,7 @@ export class AppointmentsService {
   }
 
   getAppointmentsByPatientId(patientId: number): Observable<Appointments[]> {
-    const getendpoint = `${this.endpoint}/getAppointmentBy/${patientId}`
+    const getendpoint = `${this.endpoint}/getAppointmentByPid/${patientId}`
     return this.apiService.get<Appointments>(getendpoint);
   }
 }

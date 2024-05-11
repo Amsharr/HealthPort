@@ -10,4 +10,5 @@ export interface Doctor{
     address: string; 
     username: string; 
     password: string;
+    fee: number | null;
 }

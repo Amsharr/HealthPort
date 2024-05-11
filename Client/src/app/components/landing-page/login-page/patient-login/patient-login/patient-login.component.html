@@ -4,18 +4,19 @@
     <div class="container-login">
         <div class="heading">Sign In</div>
         <form (submit)="onSubmit()" class="form">
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-2">
             <input type="username" class="form-control" id="username" placeholder="username" name="username" [(ngModel)]="username">
             <label for="username">Username</label>
           </div>
+          <label *ngIf="loginBtnClicked && username == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
           <div class="form-floating">
             <input type="password" class="form-control" id="Password" placeholder="Password" name="password" [(ngModel)]="password">
             <label for="Password">Password</label>
           </div>
+          <label *ngIf="loginBtnClicked && password == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
           <span class="forgot-password"><a routerLink="/landing-page/pat-registration">Don't have an account? Create one here</a></span>
           <input class="login-button" type="submit" value="Sign In">         
         </form>
-          <span class="agreement"><a href="#">Learn user licence agreement</a></span>
     </div>    
 </body>
 

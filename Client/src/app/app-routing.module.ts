@@ -22,6 +22,11 @@ import { NurseListComponent } from './components/Admin/nurse-list/nurse-list.com
 import { NurseEditComponent } from './components/Admin/nurse-edit/nurse-edit.component';
 import { AppointmentComponent } from './components/Patients/appointment/appointment.component';
 import { NurseDashboardComponent } from './components/nurse-dashboard/nurse-dashboard.component';
+import { DoctorDashboardComponent } from './components/Doctor/doctor-dashboard/doctor-dashboard.component';
+import { DoctorAppointmentsComponent } from './components/Doctor/doctor-appointments/doctor-appointments.component';
+import { DoctorScheduleComponent } from './components/Doctor/doctor-schedule/doctor-schedule.component';
+import { CreateWardComponent } from './components/Admin/create-ward/create-ward.component';
+import { WardListComponent } from './components/Admin/ward-list/ward-list.component';
 
 const routes: Routes = [
   { 
@@ -73,6 +78,10 @@ const routes: Routes = [
     component: DoctorListComponent 
   },
   {
+    path: 'admin/ward-list',
+    component: WardListComponent 
+  },
+  {
     path: 'admin/create-pataccount',
     component: CreatePatComponent
   },
@@ -81,9 +90,14 @@ const routes: Routes = [
     component: CreateDocComponent
   },
   {
+    path: 'admin/create-ward',
+    component: CreateWardComponent
+  },
+  {
     path:'admin/create-nurse-account',
     component: CreateNurseComponent
   },
+  
   {
     path:'admin/patient-edit',
     component: PatientEditComponent
@@ -107,6 +121,18 @@ const routes: Routes = [
   {
     path:'nurse/dashboard',
     component: NurseDashboardComponent
+  },
+  {
+    path:'doctor/dashboard',
+    component: DoctorDashboardComponent
+  },
+  {
+    path:'doctor/appointments',
+    component: DoctorAppointmentsComponent
+  },
+  {
+    path:'doctor/schedule',
+    component: DoctorScheduleComponent
   }
 ];
 

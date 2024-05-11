@@ -20,7 +20,8 @@ export class NurseEditComponent {
     email: '',
     address: '',
     username: '',
-    password: ''
+    password: '',
+    doctorId: null
   }
 
   constructor(

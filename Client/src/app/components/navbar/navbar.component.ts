@@ -8,6 +8,8 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
+
+	
 menuType:String = 'default';
 username: string = '';
 
@@ -22,6 +24,9 @@ constructor(private router: Router) { }
 
   logout(){
     this.router.navigate(['/landing-page']);
+    localStorage.removeItem('nurse');
+    localStorage.removeItem('doctor');
+    localStorage.removeItem('patient');
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('patientId');
     sessionStorage.removeItem('fullname', );
@@ -41,11 +46,19 @@ constructor(private router: Router) { }
       this.menuType = 'admin'
     }
     else if (currentUrl.includes('nurse'))
-      {
-        this.menuType = 'nurse'
-      }
+    {
+      this.menuType = 'nurse'
+    }
+    else if (currentUrl.includes('doctor'))
+    {
+      this.menuType = 'doctor'
+    }
     else {
       this.menuType = 'default';
     }
   }
+
+  openEnd(content: TemplateRef<any>) {
+		this.offcanvasService.open(content, { position: 'end' });
+	}
 }

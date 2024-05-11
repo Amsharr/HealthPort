@@ -52,6 +52,7 @@
                         optionValue="id"
                         (onChange)="onSpecialityChange($event.value)"
                     ></p-dropdown> 
+                    <label *ngIf="this.submitButtonClicked && this.appointment.specialityid == 0" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
                 </div>
                 <div class="half-width">
                     <label><span class="bold-text">Doctor</span></label>
@@ -65,12 +66,12 @@
                         optionValue="id"
                         (onChange)="onDoctorChange($event.value)"
                         ></p-dropdown>
+                        <label *ngIf="this.submitButtonClicked && this.appointment.doctorid == 0" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
                 </div>
             </div>
             <div class="flex">
                 <div class="half-width">
-                    <label>
-                        <span class="bold-text">Date</span>
+                    <label><span class="bold-text">Date</span>                      
                         <input 
                         class="input" 
                         type="date" 
@@ -80,8 +81,9 @@
                         name="date"
                         required=""
                         (ngModelChange)="getAvailableDoctorTimes(appointment.doctorid,$event)">
+                        <label *ngIf="this.submitButtonClicked && this.appointment.date == null" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
                     </label>  
-                </div>
+                    </div>
                 <div class="half-width">
                     <label><span class="bold-text">Time</span></label>  
                     <p-dropdown
@@ -90,7 +92,12 @@
                         [(ngModel)]="appointment.time"
                         [editable]="true"
                     ></p-dropdown>
-                </div>                  
+                    <label *ngIf="this.submitButtonClicked && this.appointment.time == null" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>                  
+                </div>
+            </div>
+            <div class="flex" style="display: block;">
+                <label><span class="bold-text">Fee: Rs. <br></span></label>
+                    {{appointment.amountPayable}}
             </div>
 
             <div class="flex flex-wrap gap-3">
@@ -104,7 +111,7 @@
                     <label for="paymentMethod1" class="ml-2">
                         Credit Card / Debit Card
                     </label>
-                </div>
+                </div>               
                 
                 <div class="flex align-items-center">
                     <p-radioButton 
@@ -117,10 +124,13 @@
                     </label>
                 </div>
             </div>
-
+            <label *ngIf="this.submitButtonClicked && this.appointment.paymentMethod == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             <button class="submit">Book Appointment</button>
         </form>   
     </div>
 </ng-template>
 
-    
+
+
+
+

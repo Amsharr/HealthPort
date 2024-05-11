@@ -1,0 +1,20 @@
+<div class="container">
+    <p-table 
+        [value]="schedules" 
+        styleClass="p-datatable-gridlines" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Day Of the Week</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-schedule>
+            <tr>
+                <td>{{ dayOfWeekAsString(schedule.dayOfWeek) }}</td>
+                <td>{{ schedule.startTime }}</td>
+                <td>{{ schedule.endTime }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>

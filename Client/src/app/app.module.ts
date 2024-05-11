@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingPageComponent } from './components/landing-page/Landing page/landing-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SelectUserComponent } from './components/landing-page/login-page/select-user/select-user/select-user.component';
@@ -47,6 +47,19 @@ import { SplitterModule } from 'primeng/splitter';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NurseDashboardComponent } from './components/nurse-dashboard/nurse-dashboard.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { DoctorDashboardComponent } from './components/Doctor/doctor-dashboard/doctor-dashboard.component';
+import { DoctorAppointmentsComponent } from './components/Doctor/doctor-appointments/doctor-appointments.component';
+import { DoctorPatientsComponent } from './components/Doctor/doctor-patients/doctor-patients.component';
+import { DoctorScheduleComponent } from './components/Doctor/doctor-schedule/doctor-schedule.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
+import { DoctorScheduleWidgetComponent } from './components/Doctor/doctor-schedule-widget/doctor-schedule-widget.component';
+import { DoctorAppointmentsWidgetComponent } from './components/Doctor/doctor-appointments-widget/doctor-appointments-widget.component';
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import { CreateWardComponent } from './components/Admin/create-ward/create-ward.component';
+import { WardListComponent } from './components/Admin/ward-list/ward-list.component';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +90,15 @@ import { FileUploadModule } from 'primeng/fileupload';
     NurseEditComponent,
     MyProfileAdminComponent,
     AppointmentComponent,
-    NurseDashboardComponent
+    NurseDashboardComponent,
+    DoctorDashboardComponent,
+    DoctorAppointmentsComponent,
+    DoctorPatientsComponent,
+    DoctorScheduleComponent,
+    DoctorScheduleWidgetComponent,
+    DoctorAppointmentsWidgetComponent,
+    CreateWardComponent,
+    WardListComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +118,13 @@ import { FileUploadModule } from 'primeng/fileupload';
     CommonModule,
     SplitterModule,
     TabsModule,
-    FileUploadModule
+    FileUploadModule,
+    InputTextareaModule,
+    ButtonModule,
+    NgbTimepickerModule,
+    PasswordModule,
+    InputTextModule,
+    NgbPaginationModule
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent],

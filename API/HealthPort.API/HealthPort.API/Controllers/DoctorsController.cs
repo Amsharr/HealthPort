@@ -32,11 +32,6 @@ namespace HealthPort.API.Controllers
         {
             var doctors = await _hpDbcontext.Doctors.Where(x => x.specialityid == specialityId).ToListAsync();
 
-            //foreach(var doctor in doctors)
-            //{
-            //    doctor.fullName = (doctor.fullName != null) ? doctor.fullName : $"{doctor.firstName} {doctor.lastName}";
-            //}
-
             return Ok(doctors);
         }
 
@@ -92,6 +87,7 @@ namespace HealthPort.API.Controllers
             doctor.address = updateRequest.address;
             doctor.username = updateRequest.username;
             doctor.password = updateRequest.password;
+            doctor.fee = updateRequest.fee;
 
             await _hpDbcontext.SaveChangesAsync();
 
@@ -156,6 +152,72 @@ namespace HealthPort.API.Controllers
 
             return Ok(doctors);
         }
+
+        [HttpGet]
+        [Route("getSchedule/{doctorId}")]
+        public async Task<IActionResult> getScheduleByDoctorId(int doctorId)
+        {
+            var schedule = await _hpDbcontext.DoctorSchedule.Where(x => x.doctorId == doctorId).ToListAsync();
+
+            return Ok(schedule);
+        }
+
+        [HttpPut]
+        [Route("updateSchedule")]
+        public async Task<IActionResult> updateDoctorSchedule([FromBody] DoctorSchedule updateRequest) 
+        {
+
+            if (updateRequest.id == 0)
+            {
+                return BadRequest("Invalid schedule ID");
+            }
+
+            var schedule = await _hpDbcontext.DoctorSchedule.FindAsync(updateRequest.id);
+
+            if (schedule == null)
+            {
+                return NotFound();
+            }
+
+
+            schedule.id = updateRequest.id;
+            schedule.doctorId = updateRequest.doctorId;
+            schedule.StartTime = updateRequest.StartTime;
+            schedule.EndTime = updateRequest.EndTime;
+            schedule.DayOfWeek = updateRequest.DayOfWeek;   
+
+
+            await _hpDbcontext.SaveChangesAsync();
+
+            return Ok(schedule);
+        }
+
+        [HttpPost]
+        [Route("addSchedule")]
+        public async Task<IActionResult> addSchedule([FromBody] DoctorSchedule schedule)
+        {
+
+            await _hpDbcontext.DoctorSchedule.AddAsync(schedule);
+            await _hpDbcontext.SaveChangesAsync();
+
+            return Ok(schedule);
+        }
+
+        [HttpDelete]
+        [Route("deleteSchedule/{scheduleId}")]
+        public async Task<IActionResult> DeleteSchedule(int scheduleId)
+        {
+            var schedule = await _hpDbcontext.DoctorSchedule.FindAsync(scheduleId);
+
+            if (schedule == null)
+                return NotFound("doctor not found.");
+
+            _hpDbcontext.DoctorSchedule.Remove(schedule);
+            await _hpDbcontext.SaveChangesAsync();
+
+            return Ok();
+        }
+
 
     }
 }

@@ -30,9 +30,9 @@
                         <td>{{ appointment.date }}</td>
                         <td>{{ appointment.time }}</td>
                         <td style="justify-content: center;">
-                            <p-toast />
                             <p-confirmPopup />
-                            <p-button label="Cancel" (click)="confirmModal($event,appointment.id)"></p-button>
+                            <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="openUpdateModal(content, appointment)">Update <i class="pi pi-pencil" style="color: #ffffff"></i></button>
+                            <button type="button" class="btn btn-danger" (click)="confirmModal($event,appointment.id)">Cancel <i class="pi pi-times"></i></button>
                         </td>
                     </tr>
                 </ng-template>
@@ -66,9 +66,7 @@
                                 <td>{{ appointment.date }}</td>
                                 <td>{{ appointment.time }}</td>
                                 <td style="justify-content: center;">
-                                    <p-toast />
-                                    <p-confirmPopup />
-                                    <p-button label="Cancel" (click)="confirmModal($event,appointment.id)"></p-button>
+                                    <button type="button" class="btn btn-info" (click)="openNotes(content,appointment)">View Doctor Notes <i class="pi pi-clipboard"></i></button>
                                 </td>
                             </tr>
                         </ng-template>
@@ -77,4 +75,62 @@
           </tab>
         </tabset>
     </div>
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" *ngIf="notesbtnclicked == false">Update Schedule</h4>
+            <h4 class="modal-title" *ngIf="notesbtnclicked == true">Doctor Notes</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <br>
+        <div class="modal-body">
+            <!-- form to view doctor notes -->
+            <form *ngIf="notesbtnclicked == true">
+                <textarea 
+                    [readonly]="true"
+                    name="doctorNotes"
+                    rows="5"
+                    cols="57" 
+                    pInputTextarea
+                    [(ngModel)]="appointment.doctorNotes">
+                </textarea>
+            </form>
+
+            <!-- form for updating appointment -->
+            <form class="form-register" *ngIf="notesbtnclicked == false">
+            <div class="flex">
+                <div class="half-width">
+                    <label>
+                        <span class="bold-text">Date</span>
+                        <input 
+                        class="input" 
+                        type="date" 
+                        id="date"
+                        [(ngModel)]="appointment.date"
+                        [placeholder]="''" 
+                        name="date"
+                        required=""
+                        (ngModelChange)="getAvailableDoctorTimes(appointment.doctorid,$event)">
+                    </label>  
+                </div>
+                <div class="half-width">
+                    <label><span class="bold-text">Time</span></label>  
+                    <p-dropdown
+                        name="time"
+                        [options]="availableTimes"
+                        [(ngModel)]="appointment.time"
+                        [editable]="true"
+                    ></p-dropdown>
+                </div>                  
+            </div>
+            <div class="flex" style="display: block;">
+                <label><span class="bold-text">Fee: Rs. <br></span></label>
+                    {{appointment.amountPayable}}
+            </div>
+        </form>   
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="updateAppointment(appointment)" *ngIf="notesbtnclicked == false">Save</button>
+        </div>
+    </ng-template>
 </body>

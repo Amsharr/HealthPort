@@ -21,6 +21,7 @@ namespace HealthPort.API.Data
         public DbSet<DoctorSchedule> DoctorSchedule { get; set; }
 
         public DbSet<MedicalFiles> MedicalFiles { get; set; }
+        public DbSet<WardRoom> WardRoom { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

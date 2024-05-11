@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Doctor } from '../Models/doctor.model';
 import { Speciality } from '../Models/speciality.model';
 import { APIService } from './api.service';
+import { Schedules } from '../Models/schedule.model';
 
 
 @Injectable({
@@ -47,6 +48,27 @@ export class DoctorService {
     const getDoctorBySpecialityEndpoint = `${this.endpoint}/getDoctorBySpeciality/${specialityId}`;
     return this.apiService.get<Doctor>(getDoctorBySpecialityEndpoint);
   }
-  
+
+  getScheduleByDoctorId(doctorId:number): Observable<Schedules[]>{
+    const getEndpoint = `${this.endpoint}/getSchedule/${doctorId}`;
+    return this.apiService.get<Schedules>(getEndpoint);
+  }
+
+  addDoctorSchedule(newSchedule: Schedules): Observable<Schedules> {
+    const newEndpoint = `${this.endpoint}/addSchedule`
+    return this.apiService.post<Schedules>(newEndpoint,newSchedule);
+  } 
+
+  //delete doctor account
+  deleteScheduleById(scheduleId: number): Observable<any> {
+    const deleteEndpoint = this.endpoint + '/deleteSchedule';
+    return this.apiService.delete<any>(deleteEndpoint, scheduleId);
+  }
+
+  //update Schedule
+  editSchedule(updateschedule: Schedules): Observable<Schedules>{
+    const updateEndpoint = this.endpoint + '/updateSchedule'
+    return this.apiService.put<Schedules>(updateEndpoint,updateschedule);
+  }
 
 }

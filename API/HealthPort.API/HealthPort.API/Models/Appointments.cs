@@ -16,7 +16,7 @@ namespace HealthPort.API.Models
         public int paymentid { get; set; }
 
         public string? paymentStatus { get; set; }
-
+        public int? amountPayable { get; set; } 
         public int status { get; set; }
         public string? doctorNotes { get; set; }
 

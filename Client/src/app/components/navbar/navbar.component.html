@@ -4,6 +4,7 @@
       <img *ngIf="menuType==='homepage'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/homepage">
       <img *ngIf="menuType==='admin'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/admin-dashboard">
       <img *ngIf="menuType==='nurse'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/nurse/dashboard">
+      <img *ngIf="menuType==='doctor'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/doctor/dashboard">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -81,7 +82,7 @@
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
+          <button ngbDropdownItem  (click)="openEnd(content)"><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
           <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
         </div>
       </div>  
@@ -102,6 +103,27 @@
           <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
           <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
         </div>
-      </div>          
+      </div> 
+      <div ngbDropdown class="d-inline-block" *ngIf="menuType==='doctor'">
+        <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
+          <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">Dr. {{username}}</span></a>
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
+          <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
+        </div>
+      </div>            
     </div>
+    <ng-template #content let-offcanvas>
+      <div class="offcanvas-header">
+        <h4 class="offcanvas-title">Offcanvas title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+      </div>
+      <div class="offcanvas-body">
+        
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Close</button>
+        </div>
+      </div>
+    </ng-template>
   </nav>  

@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<p-toast />
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2">
+            <app-side-panel></app-side-panel>
+        </div>
+        <div class="col py-3" style="margin-left: 230px;">
+          <h1 style="color: white;">Create Ward Room  <i class="fa-solid fa-hospital-user icon"></i></h1>
+
+          <form class="form-register" #form="ngForm" (ngSubmit)="addWard()">
+                <label>
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="roomNumber" 
+                    name="roomNumber"
+                    [(ngModel)]="ward.roomNumber"
+                    placeholder="" 
+                    required="">
+                    <span>Room Number *</span>
+                </label>
+                <label *ngIf="this.submitBtnClicked == true && this.ward.roomNumber == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
+            
+            <div class="flex">
+                <div class="half-width">
+                    <label>
+                        <p-dropdown 
+                        name="doctorId"
+                        [options]="doctors"
+                        [(ngModel)]="ward.doctorId"
+                        optionLabel="fullName"
+                        optionValue="id"
+                        [filter]="true"
+                        filterBy="fullName" 
+                        [showClear]="true"
+                        placeholder="Assigned Doctor">
+                    </p-dropdown>
+                    </label>             
+                    <label *ngIf="this.submitBtnClicked == true && this.ward.doctorId == 0" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
+                </div>
+                <div class="half-width">
+                    <label>
+                        <p-dropdown 
+                        name="patientId"
+                        [options]="patients"
+                        [(ngModel)]="ward.patientId"
+                        optionLabel="fullName"
+                        optionValue="id"
+                        [filter]="true"
+                        filterBy="fullName" 
+                        [showClear]="true"
+                        placeholder="Patient in">
+                    </p-dropdown>
+                    </label>  
+                    <label *ngIf="this.submitBtnClicked == true && this.ward.patientId == 0" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>           
+                </div>
+            </div>
+            <button class="submit">Add Ward</button>
+        </form>   
+        </div>
+    </div>
+  </div>
+</body>
+

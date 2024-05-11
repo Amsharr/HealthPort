@@ -124,6 +124,44 @@ namespace HealthPort.API.Controllers
 
             return Ok();
         }
+
+        [HttpPut]
+        [Route("update")]
+        public async Task<IActionResult> UpdateAppointment([FromBody] Appointments updateRequest)
+        {
+
+            if (updateRequest.id == 0)
+            {
+                return BadRequest("Invalid doctor ID");
+            }
+
+            var appointment = await _hpDbcontext.Appointments.FindAsync(updateRequest.id);
+
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+
+
+            appointment.id = updateRequest.id;
+            appointment.specialityid = updateRequest.specialityid;
+            appointment.patientName = updateRequest.patientName;
+            appointment.patientId = updateRequest.patientId;
+            appointment.doctorid = updateRequest.doctorid;
+            appointment.doctorName = updateRequest.doctorName;
+            appointment.date = updateRequest.date;
+            appointment.time = updateRequest.time;
+            appointment.paymentMethod = updateRequest.paymentMethod;
+            appointment.paymentid = updateRequest.paymentid;
+            appointment.paymentStatus = updateRequest.paymentStatus;
+            appointment.status = updateRequest.status;
+            appointment.doctorNotes = updateRequest.doctorNotes;
+            appointment.amountPayable  = updateRequest.amountPayable;
+
+            await _hpDbcontext.SaveChangesAsync();
+
+            return Ok(appointment);
+        }
     }
 
 }

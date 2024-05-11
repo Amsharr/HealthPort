@@ -29,4 +29,14 @@ export class AppointmentsService {
     const getendpoint = `${this.endpoint}/getAppointmentByPid/${patientId}`
     return this.apiService.get<Appointments>(getendpoint);
   }
+
+  getAppointmentsByDoctorId(doctorId: number): Observable<Appointments[]> {
+    const getendpoint = `${this.endpoint}/getAppointmentByDid/${doctorId}`
+    return this.apiService.get<Appointments>(getendpoint);
+  }
+
+  editAppointment(updateRequest: Appointments): Observable<Appointments>{
+    const updateEndpoint = this.endpoint + '/update'
+    return this.apiService.put<Appointments>(updateEndpoint,updateRequest);
+  }
 }

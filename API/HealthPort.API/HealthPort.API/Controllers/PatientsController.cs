@@ -82,6 +82,11 @@ namespace HealthPort.API.Controllers
             patient.address = updateRequest.address;
             patient.username = updateRequest.username;
             patient.password = updateRequest.password;
+            patient.bloodtype = updateRequest.bloodtype;
+            patient.gender = updateRequest.gender;
+            patient.height = updateRequest.height;
+            patient.nationality = updateRequest.nationality;    
+
 
             await _hpDbcontext.SaveChangesAsync();
 

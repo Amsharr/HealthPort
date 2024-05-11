@@ -6,11 +6,13 @@ specialityid: number;
 patientName: string;
 patientId : number;
 doctorid : number;
-doctorName: string;
+doctorName: string | null;
 date : Date | null;
 time : Time | null;
 paymentMethod: string;
 paymentid : number;
-paymentStatus:string;
+paymentStatus:string | null;
 status: number;
+doctorNotes: string | null;
+amountPayable: number | null;
 }

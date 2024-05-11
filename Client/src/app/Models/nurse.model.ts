@@ -9,4 +9,5 @@ export interface Nurse {
     address: string;
     username: string;
     password: string;
+    doctorId: number | null;
 }

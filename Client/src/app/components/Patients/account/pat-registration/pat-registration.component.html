@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<p-toast />
 <body>
     <form class="form-register" #form="ngForm" (ngSubmit)="addPatient()">
         <p class="title">Register </p>
@@ -16,6 +17,7 @@
                     required="">
                     <span>Firstname *</span>
                 </label>
+                <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.firstName == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             </div>
             <div class="half-width">
                 <label>
@@ -29,6 +31,7 @@
                     required="">
                     <span>Lastname *</span>
                 </label>
+                <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.lastName == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             </div>
         </div>  
 
@@ -45,6 +48,7 @@
                     required="">
                     <span>Date of Birth *</span>
                 </label>
+                <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.dob == null" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             </div>
             <div class="half-width">
                 <label>
@@ -58,6 +62,7 @@
                     required="">
                     <span>NIC No</span>
                 </label>
+                <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.nicNo == null" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             </div>
         </div>        
     
@@ -74,6 +79,7 @@
                     required="">
                     <span>Mobile No *</span>
                 </label>
+                <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.mobileNo == null" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             </div>
             <div class="half-width">
                 <label>
@@ -87,6 +93,7 @@
                     required="">
                     <span>Email</span>
                 </label>
+                <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.email == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             </div>
         </div>
         
@@ -101,6 +108,7 @@
             required="">
             <span>Address</span>
         </label> 
+        <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.address == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
     
         <div class="flex">
             <div class="half-width">
@@ -115,6 +123,7 @@
                     required="">
                     <span>Username *</span>
                 </label>
+                <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.username == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             </div>
             <div class="half-width">
                 <label>
@@ -128,11 +137,16 @@
                     required="">
                     <span>Password *</span>
                 </label>
+                <label *ngIf="this.submitBtnClicked == true && this.patientRegistration.password == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             </div>
         </div>
     
-        <button class="submit">Submit</button>
+        <button class="submit">Create account</button>
         <p class="signin">Already have an account? <a routerLink="/landing-page/patient-login">Sign in</a> </p>
     </form>    
 </body>
 
+      
+      
+      
+      

@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+<p-toast />
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2">
+            <app-side-panel></app-side-panel>
+        </div>
+        <div class="col py-3" style="margin-left: 230px;">
+            <h1 style="color: white;"> My schedules  <i class="pi pi-calendar-clock" style="font-size: 2rem"></i></h1>
+            <br>
+            <div class="schedule-header">                
+                <h3 style="color: white;">Current schedule <i class="pi pi-clock"></i></h3>
+                <button type="button" class="btn btn-success" (click)="openLg(content)">Add new Schedule <i class="pi pi-plus"></i></button>
+            </div>
+          <div>
+        </div>
+        <div class="container">
+        <p-table 
+            [value]="schedules" 
+            styleClass="p-datatable-gridlines" 
+            [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Day Of the Week</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-schedule>
+                <tr>
+                    <td>{{ dayOfWeekAsString(schedule.dayOfWeek) }}</td>
+                    <td>{{ schedule.startTime }}</td>
+                    <td>{{ schedule.endTime }}</td>
+                    <td style="display: flex;">
+                        <p-confirmPopup />
+                        <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="openUpdateModal(content, schedule)">Update schedule <i class="pi pi-pencil" style="color: #ffffff"></i></button>
+                        <button type="button" class="btn btn-danger" (click)="confirmModal($event,schedule.id)">Delete <i class="pi pi-trash"></i></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div>
+        </div>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" *ngIf="addBtnClicked == true">Add Schedule</h4>
+        <h4 class="modal-title" *ngIf="updateBtnClicked == true">Update Schedule</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+    <br>
+	<div class="modal-body">
+		<form class="row g-3">
+            <div class="row">
+                <div class="col">
+                    <label for=""> Day Of the Week</label>
+                    <p-dropdown
+                        name="dayOfWeek"
+                        optionLabel="name"
+                        optionValue="value"
+                        [options]="days" 
+                        placeholder="Select a City" 
+                        [(ngModel)]="newSchedule.dayOfWeek"
+                    />
+                </div>
+                <div class="col">
+                    <label for=""> Start Time</label>
+                    <ngb-timepicker [(ngModel)]="newSchedule.startTime" [meridian]="meridian" name="startTime"/>
+                </div>
+                <div class="col">
+                    <label for=""> End Time</label>
+                    <ngb-timepicker [(ngModel)]="newSchedule.endTime" [meridian]="meridian" name="endTime"/>
+                </div>
+            </div>
+        </form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" (click)="save(newSchedule)" *ngIf="addBtnClicked == true">Save</button>
+        <button type="button" class="btn btn-primary" (click)="updateSchedule(newSchedule)" *ngIf="updateBtnClicked == true">Update</button>
+	</div>
+</ng-template>
+
+</body>
+

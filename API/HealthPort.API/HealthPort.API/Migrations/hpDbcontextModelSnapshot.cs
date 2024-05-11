@@ -49,6 +49,9 @@ namespace HealthPort.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<int?>("amountPayable")
+                        .HasColumnType("int");
+
                     b.Property<DateOnly>("date")
                         .HasColumnType("date");
 
@@ -141,6 +144,9 @@ namespace HealthPort.API.Migrations
 
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("fee")
+                        .HasColumnType("int");
 
                     b.Property<string>("firstName")
                         .HasColumnType("nvarchar(max)");
@@ -246,6 +252,9 @@ namespace HealthPort.API.Migrations
                     b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("bloodtype")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateOnly>("dob")
                         .HasColumnType("date");
 
@@ -258,10 +267,19 @@ namespace HealthPort.API.Migrations
                     b.Property<string>("fullName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("height")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("lastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("mobileNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nationality")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("nicNo")
@@ -271,6 +289,9 @@ namespace HealthPort.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("weigth")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -308,6 +329,33 @@ namespace HealthPort.API.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Specialites");
+                });
+
+            modelBuilder.Entity("HealthPort.API.Models.WardRoom", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int?>("doctorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("patientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("roomNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("doctorId");
+
+                    b.HasIndex("patientId");
+
+                    b.ToTable("WardRoom");
                 });
 
             modelBuilder.Entity("HealthPort.API.Models.Appointments", b =>
@@ -365,6 +413,21 @@ namespace HealthPort.API.Migrations
                         .IsRequired();
 
                     b.Navigation("speciality");
+                });
+
+            modelBuilder.Entity("HealthPort.API.Models.WardRoom", b =>
+                {
+                    b.HasOne("HealthPort.API.Models.Doctors", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("doctorId");
+
+                    b.HasOne("HealthPort.API.Models.Patients", "Patient")
+                        .WithMany()
+                        .HasForeignKey("patientId");
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
                 });
 #pragma warning restore 612, 618
         }

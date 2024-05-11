@@ -18,6 +18,11 @@ namespace HealthPort.API.Data
         public DbSet<Appointments> Appointments { get; set; }
         public DbSet<Admin> Admin { get; set; }    
 
+        public DbSet<DoctorSchedule> DoctorSchedule { get; set; }
+
+        public DbSet<MedicalFiles> MedicalFiles { get; set; }
+        public DbSet<WardRoom> WardRoom { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Doctors>()
@@ -45,6 +50,11 @@ namespace HealthPort.API.Data
                 .HasOne(d => d.payment)
                 .WithMany()
                 .HasForeignKey(d => d.paymentid);
+
+            modelBuilder.Entity<DoctorSchedule>()
+               .HasOne(d => d.Doctor)
+               .WithMany()
+               .HasForeignKey(d => d.doctorId);
         }
     }
 }

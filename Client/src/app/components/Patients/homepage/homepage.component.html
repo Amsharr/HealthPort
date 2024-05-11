@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<p-toast />
 <body>
     <div class="main">
         <div class="slogan">
@@ -8,7 +9,7 @@
         </div>
         <div class="buttons">
             <button class="btn-appointment" (click)="openEnd(content)">
-                <a><span class="ms-1 d-none d-sm-inline">book an appointment     </span><i class="fa-regular fa-calendar-check"></i></a>
+                <a><span class="ms-1 d-none d-sm-inline">Book an appointment     </span><i class="fa-regular fa-calendar-check"></i></a>
             </button>
             <button class="btn-learn">
                 <a><span class="ms-1 d-none d-sm-inline">Learn more     </span><i class="fa-solid fa-arrow-right"></i></a>
@@ -23,72 +24,113 @@
 <ng-template #content let-offcanvas>
     <div class="offcanvas-header">
         <h4 class="offcanvas-title">Book Appointment</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeOffcanvas(offcanvas)"></button>
     </div>
     <div class="offcanvas-body">
-        <form class="form-register" #form="ngForm" (submit)="submit()">
+        <form class="form-register" #appointmentForm="ngForm" (submit)="submit(offcanvas)">
                 <label>
+                    <span class="bold-text">Patient name</span>
                     <input 
                     class="input" 
                     type="text" 
                     id="firstName" 
                     name="firstName"
-                    required="">
-                    <span>Patient name</span>
+                    [(ngModel)]="appointment.patientName"
+                    required=""
+                    disabled>                    
                 </label>
             <div class="flex">
                 <div class="half-width">
-                    <label>
-                        <input 
-                        class="input" 
-                        type="text" 
-                        id="speciality" 
-                        name="speciality"
-                        placeholder="" 
-                        required="">
-                        <span>Speciality</span>
-                    </label>
+                    <label><span class="bold-text">Speciality</span></label>
+                    <p-dropdown
+                        name="Speciality"
+                        [options]="specialities"
+                        [(ngModel)]="appointment.specialityid"
+                        defaultLabel="Speciality"
+                        [editable]="true"
+                        optionLabel="description"
+                        optionValue="id"
+                        (onChange)="onSpecialityChange($event.value)"
+                    ></p-dropdown> 
+                    <label *ngIf="this.submitButtonClicked && this.appointment.specialityid == 0" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
                 </div>
                 <div class="half-width">
-                    <label>
+                    <label><span class="bold-text">Doctor</span></label>
+                        <p-dropdown
+                        name="Doctor"
+                        [options]="doctors"
+                        [(ngModel)]="appointment.doctorid"
+                        placeholder="Doctor"
+                        [editable]="true"
+                        optionLabel="fullName"
+                        optionValue="id"
+                        (onChange)="onDoctorChange($event.value)"
+                        ></p-dropdown>
+                        <label *ngIf="this.submitButtonClicked && this.appointment.doctorid == 0" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="half-width">
+                    <label><span class="bold-text">Date</span>                      
                         <input 
                         class="input" 
-                        type="text" 
-                        id="LastName" 
-                        name="LastName"
-                        placeholder="" 
-                        required="">
-                        <span>Doctor</span>
+                        type="date" 
+                        id="date"
+                        [(ngModel)]="appointment.date"
+                        [placeholder]="''" 
+                        name="date"
+                        required=""
+                        (ngModelChange)="getAvailableDoctorTimes(appointment.doctorid,$event)">
+                        <label *ngIf="this.submitButtonClicked && this.appointment.date == null" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
+                    </label>  
+                    </div>
+                <div class="half-width">
+                    <label><span class="bold-text">Time</span></label>  
+                    <p-dropdown
+                        name="time"
+                        [options]="availableTimes"
+                        [(ngModel)]="appointment.time"
+                        [editable]="true"
+                    ></p-dropdown>
+                    <label *ngIf="this.submitButtonClicked && this.appointment.time == null" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>                  
+                </div>
+            </div>
+            <div class="flex" style="display: block;">
+                <label><span class="bold-text">Fee: Rs. <br></span></label>
+                    {{appointment.amountPayable}}
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+                <label for=""><span class="bold-text">Payment Method</span></label>
+                <div class="flex align-items-center">
+                    <p-radioButton 
+                        name="Online" 
+                        value="Online" 
+                        [(ngModel)]="appointment.paymentMethod" 
+                        inputId="paymentMethod1" />
+                    <label for="paymentMethod1" class="ml-2">
+                        Credit Card / Debit Card
+                    </label>
+                </div>               
+                
+                <div class="flex align-items-center">
+                    <p-radioButton 
+                        name="Pay at Hospital" 
+                        value="Pay at Hospital" 
+                        [(ngModel)]="appointment.paymentMethod" 
+                        inputId="paymentMethod2" />
+                    <label for="paymentMethod2" class="ml-2">
+                        Pay at Hospital
                     </label>
                 </div>
             </div>
-            <div class="half-width">
-                <label>
-                    <input 
-                    class="input" 
-                    type="date" 
-                    id="date"
-                    [placeholder]="''" 
-                    name="date"
-                    required="">
-                    <span>Date *</span>
-                </label>  
-            </div>
-            <div class="half-width">
-                <label>
-                    <input 
-                    class="input" 
-                    type="time" 
-                    id="time"
-                    [placeholder]="''" 
-                    name="time"
-                    required="">
-                    <span>Date *</span>
-                </label>  
-            </div>
-                  
+            <label *ngIf="this.submitButtonClicked && this.appointment.paymentMethod == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
             <button class="submit">Book Appointment</button>
         </form>   
     </div>
 </ng-template>
-    
+
+
+
+
+

@@ -1,8 +1,18 @@
 <h1>Menu <i class="fa-solid fa-bars"></i></h1>
-<ul>
-    <li routerLink="/admin-dashboard">Dashboard  <i class="fa-solid fa-chart-line"></i></li>
-    <li routerLink="/admin/patient-list">Patients  <i class="fa-solid fa-hospital-user icon"></i></li>
-    <li>Doctors  <i class="fa-solid fa-user-doctor icon"></i></li>
-    <li>Nurses  <i class="fa-solid fa-user-nurse icon"></i></li>
-    <li>Wards  <i class="fa-solid fa-bed-pulse icon"></i></li>
-</ul>
+<div [ngSwitch]="menuType">
+
+    <ul *ngSwitchCase="'admin'">
+        <li routerLink="/admin-dashboard">Dashboard  <i class="fa-solid fa-chart-line"></i></li>
+        <li routerLink="/admin/patient-list">Patients  <i class="fa-solid fa-hospital-user icon"></i></li>
+        <li>Doctors  <i class="fa-solid fa-user-doctor icon"></i></li>
+        <li>Nurses  <i class="fa-solid fa-user-nurse icon"></i></li>
+        <li routerLink="/admin/create-ward">Wards  <i class="fa-solid fa-bed-pulse icon"></i></li>
+    </ul>
+
+    <ul *ngSwitchCase="'doctor'">
+        <li routerLink="/doctor/dashboard">Dashboard  <i class="fa-solid fa-chart-line"></i></li>
+        <li routerLink="/doctor/appointments">Appointments  <i class="fa-solid fa-calendar-check"></i></li>
+        <li routerLink="/doctor/schedule">Schedule  <i class="fa-solid fa-calendar-days"></i></li>
+        <li routerLink="/doctor/patients">Patients  <i class="fa-solid fa-hospital-user icon"></i></li>
+    </ul>
+</div>

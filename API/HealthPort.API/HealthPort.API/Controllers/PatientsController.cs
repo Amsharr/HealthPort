@@ -22,7 +22,12 @@ namespace HealthPort.API.Controllers
         {
           var patients = await _hpDbcontext.Patients.ToListAsync();
 
-          return Ok(patients);
+            foreach (var patient in patients)
+            {
+                patient.fullName = $"{patient.firstName} {patient.lastName}";
+            }
+
+            return Ok(patients);
         }
 
         [HttpPost]
@@ -40,6 +45,8 @@ namespace HealthPort.API.Controllers
         {
             var patient = await _hpDbcontext.Patients
                 .FirstOrDefaultAsync(p => p.username == loginRequest.username && p.password == loginRequest.password);
+
+            patient.fullName = $"{patient.firstName} {patient.lastName}";
 
             if (patient == null)
                 return NotFound("Invalid username or password.");
@@ -75,6 +82,11 @@ namespace HealthPort.API.Controllers
             patient.address = updateRequest.address;
             patient.username = updateRequest.username;
             patient.password = updateRequest.password;
+            patient.bloodtype = updateRequest.bloodtype;
+            patient.gender = updateRequest.gender;
+            patient.height = updateRequest.height;
+            patient.nationality = updateRequest.nationality;    
+
 
             await _hpDbcontext.SaveChangesAsync();
 
@@ -136,6 +148,21 @@ namespace HealthPort.API.Controllers
             return Ok(patients);
         }
 
+        [HttpGet]
+        [Route("getPatientsByDid")]
+        public async Task<IActionResult> getPatientsByDoctorId(int doctorId)
+        {
+            var appointments = await _hpDbcontext.Appointments.Where(x => x.doctorid == doctorId).ToListAsync();
+
+            List<Patients> patients = new List<Patients>();
+
+            foreach (var appointment in appointments)
+            {
+                patients = _hpDbcontext.Patients.Where(x => x.id == appointment.patientId).ToList();
+            }
+
+            return Ok(patients);
+        }
 
     }
 }

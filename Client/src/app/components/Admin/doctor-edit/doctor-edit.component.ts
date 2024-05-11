@@ -24,7 +24,8 @@ export class DoctorEditComponent{
     email: '',
     address: '',
     username: '',
-    password: ''
+    password: '',
+    fee:null
   }
 
   constructor(

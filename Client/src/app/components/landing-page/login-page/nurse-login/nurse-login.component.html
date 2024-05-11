@@ -5,16 +5,17 @@
         <div class="heading">Sign In</div>
         <form (submit)="onSubmit()" class="form">
           <div class="form-floating mb-3">
-            <input type="username" class="form-control" id="username" placeholder="username" name="username" [(ngModel)]="username">
+            <input type="username" class="form-control" id="username" placeholder="username" name="username" [(ngModel)]="username" required>
             <label for="username">Username</label>
           </div>
+          <label *ngIf="loginBtnClicked && username == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
           <div class="form-floating">
-            <input type="password" class="form-control" id="Password" placeholder="Password" name="password" [(ngModel)]="password">
+            <input type="password" class="form-control" id="Password" placeholder="Password" name="password" [(ngModel)]="password" required>
             <label for="Password">Password</label>
           </div>
+          <label *ngIf="loginBtnClicked && password == ''" style="color: red;">Field is required <i class="pi pi-info-circle"></i></label>
           <input class="login-button" type="submit" value="Sign In">         
         </form>
-          <span class="agreement"><a href="#">Learn user licence agreement</a></span>
     </div>    
 </body>
 

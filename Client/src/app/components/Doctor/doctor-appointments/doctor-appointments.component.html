@@ -1,0 +1,128 @@
+<app-navbar></app-navbar>
+<p-toast />
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2">
+            <app-side-panel></app-side-panel>
+        </div>
+        <div class="col py-3" style="margin-left: 230px;">
+            <br>
+            <h3 style="color: white;">Search for appointments</h3>
+            <app-advance-search></app-advance-search>
+            <br>
+          <div>
+            <tabset>
+                <tab>
+                <ng-template tabHeading>
+                    <span style="color: black;">Upcoming Appointments   <i class="fa-solid fa-calendar-check"></i></span>
+                </ng-template>
+                <div class="container">
+                <p-table 
+                    [value]="UpcomingAppointments" 
+                    styleClass="p-datatable-gridlines" 
+                    [tableStyle]="{ 'min-width': '50rem' }">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Appointment Id</th>
+                            <th>Patient</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-appointment>
+                        <tr>
+                            <td>{{ appointment.id }}</td>
+                            <td>{{ appointment.patientName }}</td>
+                            <td>{{ appointment.date }}</td>
+                            <td>{{ appointment.time }}</td>
+                            <td style="justify-content: center;">
+                                <p-toast />
+                                <p-confirmPopup />
+                                <button type="button" class="btn btn-primary" (click)="open(content, appointment)">View Patient Details <i class="pi pi-user" style="color: #ffffff"></i></button>
+                                        <button type="button" class="btn btn-primary" (click)="open(content, appointment)" *ngIf="this.appointment.status == 0">Add notes <i class="pi-clipboard"></i></button>
+                                        <button type="button" class="btn btn-primary" (click)="open(content, appointment)" *ngIf="this.appointment.status == 1">View notes <i class="pi-clipboard"></i></button>
+                                        <button type="button" class="btn btn-success" (click)="confirmModal($event, appointment)" *ngIf="this.appointment.status == 0">Complete Appointment <i class="pi pi-check"></i></button>
+                                        <button type="button" class="btn btn-success" *ngIf="this.appointment.status == 1" disabled>Appointment Completed <i class="pi pi-check"></i></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                
+            </div>
+        </tab>
+              <tab>
+                <ng-template tabHeading>
+                    <span style="color: black;">Past Appointments   <i class="fa-solid fa-calendar-check"></i></span>
+                </ng-template>
+                <div class="container">
+                    <p-table 
+                        [value]="PastAppointments" 
+                        styleClass="p-datatable-gridlines" 
+                        [tableStyle]="{ 'min-width': '50rem' }">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>Appointment Id</th>
+                                    <th>Patient</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Action</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-appointment>
+                                <tr>
+                                    <td>{{ appointment.id }}</td>
+                                    <td>{{ appointment.patientName }}</td>
+                                    <td>{{ appointment.date }}</td>
+                                    <td>{{ appointment.time }}</td>
+                                    <td style="justify-content: center;">
+                                        <p-toast />
+                                        <p-confirmPopup />
+                                        <button type="button" class="btn btn-primary" (click)="openLg(content)">View Patient Details <i class="pi pi-user" style="color: #ffffff"></i></button>
+                                        <button type="button" class="btn btn-primary" (click)="open(content, appointment)" *ngIf="this.appointment.status == 0">Add notes <i class="pi-clipboard"></i></button>
+                                        <button type="button" class="btn btn-primary" (click)="open(content, appointment)" *ngIf="this.appointment.status == 1">View notes <i class="pi-clipboard"></i></button>
+                                        <button type="button" class="btn btn-success" (click)="confirmModal($event, appointment)" *ngIf="this.appointment.status == 0">Complete Appointment <i class="pi pi-check"></i></button>
+                                        <button type="button" class="btn btn-success" *ngIf="this.appointment.status == 1" disabled>Appointment Completed <i class="pi pi-check"></i></button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                    </p-table>
+                </div>
+              </tab>
+            </tabset>
+        </div>
+
+        </div>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Doctor Notes</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+				<label for="dateOfBirth">Add Notes below</label>
+				<div class="input-group">
+					<textarea 
+                        name="doctorNotes"
+                        rows="5"
+                        cols="80" 
+                        pInputTextarea
+                        [(ngModel)]="appointment.doctorNotes">
+                    </textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="save(appointment)" *ngIf="this.appointment.status == 0">Save</button>
+        <button type="button" class="btn btn-outline-dark" *ngIf="this.appointment.status == 1" disabled>Save</button>
+	</div>
+</ng-template>
+<hr />
+</body>
+

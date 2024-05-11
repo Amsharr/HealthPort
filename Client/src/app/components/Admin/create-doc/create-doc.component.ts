@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Speciality } from '../../../Models/speciality.model';
 import { DoctorService } from '../../../services/doctor.service';
 import { Doctor } from '../../../Models/doctor.model';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-create-doc',
@@ -10,7 +11,7 @@ import { Doctor } from '../../../Models/doctor.model';
   styleUrl: './create-doc.component.scss'
 })
 export class CreateDocComponent implements OnInit {
-
+  submitBtnClicked: boolean = false;
   specialities: Speciality[] = [];
 
   doctorRegistration: Doctor = {
@@ -24,12 +25,14 @@ export class CreateDocComponent implements OnInit {
     email: '',
     address: '',
     username: '',
-    password: ''
+    password: '',
+    fee:null
   }
 
   constructor(
     private doctorService : DoctorService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     
   }
@@ -58,13 +61,31 @@ export class CreateDocComponent implements OnInit {
     }
   }
 
-  addDoctor(){debugger
-    this.doctorService.addDoctor(this.doctorRegistration)
-    .subscribe({
-      next: () => {
-        this.router.navigate(['/admin-dashboard'])
-      }
-    })
+  addDoctor(){
+    this.submitBtnClicked = true;
+    if(
+      (this.submitBtnClicked == true && this.doctorRegistration.firstName == '') ||
+      (this.submitBtnClicked == true && this.doctorRegistration.specialityid == 0) ||
+      (this.submitBtnClicked == true && this.doctorRegistration.lastName == '') ||
+      (this.submitBtnClicked == true && this.doctorRegistration.dob == null) ||
+      (this.submitBtnClicked == true && this.doctorRegistration.nicNo == null) ||
+      (this.submitBtnClicked == true && this.doctorRegistration.mobileNo == null) ||
+      (this.submitBtnClicked == true && this.doctorRegistration.email == '') ||
+      (this.submitBtnClicked == true && this.doctorRegistration.address == '') ||
+      (this.submitBtnClicked == true && this.doctorRegistration.username == '') ||
+      (this.submitBtnClicked == true && this.doctorRegistration.password == '')
+    ){
+      this.messageService.add({ severity: 'error', summary: 'Fill in required information', detail: 'Please enter all required fields', life: 2000 });  
+      return;
+    }else{
+      this.doctorService.addDoctor(this.doctorRegistration)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/admin-dashboard'])
+        }
+      })
+    }
+    
   }
   
 }

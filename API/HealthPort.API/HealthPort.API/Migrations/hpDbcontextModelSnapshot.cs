@@ -49,8 +49,17 @@ namespace HealthPort.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<int?>("amountPayable")
+                        .HasColumnType("int");
+
                     b.Property<DateOnly>("date")
                         .HasColumnType("date");
+
+                    b.Property<string>("doctorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("doctorNotes")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("doctorid")
                         .HasColumnType("int");
@@ -58,10 +67,22 @@ namespace HealthPort.API.Migrations
                     b.Property<int>("patientId")
                         .HasColumnType("int");
 
+                    b.Property<string>("patientName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("paymentMethod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("paymentStatus")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("paymentid")
                         .HasColumnType("int");
 
                     b.Property<int>("specialityid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("status")
                         .HasColumnType("int");
 
                     b.Property<TimeOnly>("time")
@@ -78,6 +99,33 @@ namespace HealthPort.API.Migrations
                     b.HasIndex("specialityid");
 
                     b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("HealthPort.API.Models.DoctorSchedule", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("doctorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("doctorId");
+
+                    b.ToTable("DoctorSchedule");
                 });
 
             modelBuilder.Entity("HealthPort.API.Models.Doctors", b =>
@@ -97,7 +145,13 @@ namespace HealthPort.API.Migrations
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("fee")
+                        .HasColumnType("int");
+
                     b.Property<string>("firstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("fullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("lastName")
@@ -125,6 +179,25 @@ namespace HealthPort.API.Migrations
                     b.ToTable("Doctors");
                 });
 
+            modelBuilder.Entity("HealthPort.API.Models.MedicalFiles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("Content")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MedicalFiles");
+                });
+
             modelBuilder.Entity("HealthPort.API.Models.Nurses", b =>
                 {
                     b.Property<int>("id")
@@ -138,6 +211,9 @@ namespace HealthPort.API.Migrations
 
                     b.Property<DateOnly>("dob")
                         .HasColumnType("date");
+
+                    b.Property<int?>("doctorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
@@ -176,6 +252,9 @@ namespace HealthPort.API.Migrations
                     b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("bloodtype")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateOnly>("dob")
                         .HasColumnType("date");
 
@@ -185,10 +264,22 @@ namespace HealthPort.API.Migrations
                     b.Property<string>("firstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("fullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("height")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("lastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("mobileNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nationality")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("nicNo")
@@ -198,6 +289,9 @@ namespace HealthPort.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("weigth")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -237,6 +331,33 @@ namespace HealthPort.API.Migrations
                     b.ToTable("Specialites");
                 });
 
+            modelBuilder.Entity("HealthPort.API.Models.WardRoom", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int?>("doctorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("patientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("roomNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("doctorId");
+
+                    b.HasIndex("patientId");
+
+                    b.ToTable("WardRoom");
+                });
+
             modelBuilder.Entity("HealthPort.API.Models.Appointments", b =>
                 {
                     b.HasOne("HealthPort.API.Models.Doctors", "doctor")
@@ -272,6 +393,17 @@ namespace HealthPort.API.Migrations
                     b.Navigation("speciality");
                 });
 
+            modelBuilder.Entity("HealthPort.API.Models.DoctorSchedule", b =>
+                {
+                    b.HasOne("HealthPort.API.Models.Doctors", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("doctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+                });
+
             modelBuilder.Entity("HealthPort.API.Models.Doctors", b =>
                 {
                     b.HasOne("HealthPort.API.Models.Specialites", "speciality")
@@ -281,6 +413,21 @@ namespace HealthPort.API.Migrations
                         .IsRequired();
 
                     b.Navigation("speciality");
+                });
+
+            modelBuilder.Entity("HealthPort.API.Models.WardRoom", b =>
+                {
+                    b.HasOne("HealthPort.API.Models.Doctors", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("doctorId");
+
+                    b.HasOne("HealthPort.API.Models.Patients", "Patient")
+                        .WithMany()
+                        .HasForeignKey("patientId");
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
                 });
 #pragma warning restore 612, 618
         }

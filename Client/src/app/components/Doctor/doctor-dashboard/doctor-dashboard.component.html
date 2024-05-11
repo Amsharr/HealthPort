@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2">
+            <app-side-panel></app-side-panel>
+        </div>
+          <div class="col py-3" style="margin-left: 230px;">
+            <h1 style="color: white;"> Dashboard   <i class="fa-solid fa-user-doctor icon"></i></h1>
+              <br>
+            <div>
+          </div>
+          <div>
+            <div class="row">
+              <div class="card" style="width: 550px; margin-left: 10px; margin-right: 20px;">
+                <h3> Appointments for today   <i class="fa-solid fa-calendar-check"></i></h3>
+                <app-doctor-appointments-widget></app-doctor-appointments-widget>
+              </div>
+              <div class="card" style="width: 500px; margin-left: 20px; margin-right: 10px;">
+                <h3>Current Schedule <i class="pi pi-clock" style="font-size: 30px;"></i></h3>
+                <app-doctor-schedule-widget></app-doctor-schedule-widget>
+              </div>
+            </div>            
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+

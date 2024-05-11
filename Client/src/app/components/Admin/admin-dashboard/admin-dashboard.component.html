@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<p-toast />
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-2 bg-grey">
@@ -23,8 +24,8 @@
                         <p class="day-text">View all Nurses</p>
                         <i class="fa-solid fa-user-nurse icon"></i>
                     </div>
-                    <div class="card">
-                        <p class="time-text"><span>0</span></p>
+                    <div class="card" routerLink="/admin/ward-list">
+                        <p class="time-text"><span>{{wardsCount}}</span></p>
                         <p class="day-text">View all wards</p>
                         <i class="fa-solid fa-bed-pulse icon"></i>
                     </div>
@@ -48,7 +49,7 @@
                         <p class="day-text">Create Nurse Account</p>
                         <i class="fa-solid fa-user-nurse icon"></i>
                     </div>
-                    <div class="card green">
+                    <div class="card green" routerLink="/admin/create-ward">
                         <p class="time-text"><span>+</span></p>
                         <p class="day-text">Create Ward Room</p>
                         <i class="fa-solid fa-bed-pulse icon"></i>

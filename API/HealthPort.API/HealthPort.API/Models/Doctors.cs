@@ -15,6 +15,8 @@ namespace HealthPort.API.Models
         public string address { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public string? fullName { get; set; }
+        public int? fee { get; set; }
 
         //navigation property
         public Specialites speciality { get; set; }

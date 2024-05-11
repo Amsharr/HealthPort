@@ -3,6 +3,8 @@
       <img *ngIf="menuType==='landing-page'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="">
       <img *ngIf="menuType==='homepage'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/homepage">
       <img *ngIf="menuType==='admin'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/admin-dashboard">
+      <img *ngIf="menuType==='nurse'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/nurse/dashboard">
+      <img *ngIf="menuType==='doctor'" src="../../../assets/img/logo.jpg" alt="Logo" routerLink="/doctor/dashboard">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -47,10 +49,10 @@
         </ul>
 
         <!-- patient items on navbar -->
-        <ul class="navbar-nav" *ngSwitchCase="'homepage'">
+        <ul class="navbar-nav" *ngSwitchCase="'homepage'">  
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" (click)="openEnd(content)">Book Appointment</a>
-          </li>          
+            <a class="nav-link" routerLink="my-appointments">My Appointments</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">My reports</a>
           </li>
@@ -75,11 +77,15 @@
           <a><i class="fa-solid fa-right-to-bracket"></i> <span class="ms-1 d-none d-sm-inline">Sign in</span></a>
         </button>       
       </div>
-      <div *ngIf="menuType==='homepage'">
-        <button class="btn-login" type="submit" routerLink='/homepage/account'>
+      <div ngbDropdown class="d-inline-block" *ngIf="menuType==='homepage'">
+        <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
-        </button>       
-      </div>
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem  (click)="openEnd(content)"><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
+          <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
+        </div>
+      </div>  
       <div ngbDropdown class="d-inline-block" *ngIf="menuType==='admin'">
         <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
@@ -88,72 +94,36 @@
           <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
           <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
         </div>
-      </div>           
+      </div>  
+      <div ngbDropdown class="d-inline-block" *ngIf="menuType==='nurse'">
+        <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
+          <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
+          <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
+        </div>
+      </div> 
+      <div ngbDropdown class="d-inline-block" *ngIf="menuType==='doctor'">
+        <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
+          <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">Dr. {{username}}</span></a>
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
+          <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
+        </div>
+      </div>            
     </div>
+    <ng-template #content let-offcanvas>
+      <div class="offcanvas-header">
+        <h4 class="offcanvas-title">Offcanvas title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+      </div>
+      <div class="offcanvas-body">
+        
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Close</button>
+        </div>
+      </div>
+    </ng-template>
   </nav>  
-
-  <!-- book appointment offcanvas -->
-<ng-template #content let-offcanvas>
-  <div class="offcanvas-header">
-      <h4 class="offcanvas-title">Book Appointment</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-  </div>
-  <div class="offcanvas-body">
-      <form class="form-register" #form="ngForm">
-              <div class="half-width">
-                  <label>
-                      <input 
-                      class="input" 
-                      type="text" 
-                      id="speciality" 
-                      name="speciality"
-                      placeholder="" 
-                      required="">
-                      <span>Patient name</span>
-                  </label>
-              </div> 
-          <div class="flex">
-              <div class="half-width">
-                  <label>
-                      <input 
-                      class="input" 
-                      type="text" 
-                      id="speciality" 
-                      name="speciality"
-                      placeholder="" 
-                      required="">
-                      <span>Speciality</span>
-                  </label>
-              </div>
-              <div class="half-width">
-                  <label>
-                      <input 
-                      class="input" 
-                      type="text" 
-                      id="LastName" 
-                      name="LastName"
-                      placeholder="" 
-                      required="">
-                      <span>Doctor</span>
-                  </label>
-              </div>
-          </div>
-  
-          <div class="flex">
-              <div class="half-width">
-                  <label>
-                      <input 
-                      class="input" 
-                      type="date" 
-                      id="DateOfBirth"
-                      [placeholder]="''" 
-                      name="DateOfBirth"
-                      required="">
-                      <span>Date *</span>
-                  </label>
-              </div>
-          </div>            
-          <button class="submit">Book Appointment</button>
-      </form>   
-  </div>
-</ng-template>

@@ -45,7 +45,7 @@ export class PatientListComponent implements OnInit{
     });
   }
 
-  confirmModal(event: Event, patientId: number) {debugger
+  confirmModal(event: Event, patientId: number) {
     this.confirmationService.confirm({
         target: event.target as EventTarget,
         message: 'Do you want to delete this record?',

@@ -20,7 +20,8 @@ export class NurseEditComponent {
     email: '',
     address: '',
     username: '',
-    password: ''
+    password: '',
+    doctorId: null
   }
 
   constructor(
@@ -29,7 +30,7 @@ export class NurseEditComponent {
     private dataService: DataService
   ) {}
 
-  ngOnInit(): void {debugger
+  ngOnInit(): void {
     //populate form
     this.dataService.populateForm<Nurse>('nurse').subscribe((response)=> {
       this.nurse = response;

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PatAccountComponent } from './pat-account.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PatAccountComponent', () => {
   let component: PatAccountComponent;
@@ -8,7 +9,8 @@ describe('PatAccountComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PatAccountComponent]
+      declarations: [PatAccountComponent],
+      imports: [HttpClientTestingModule],
     })
     .compileComponents();
     

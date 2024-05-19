@@ -60,6 +60,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CreateWardComponent } from './components/Admin/create-ward/create-ward.component';
 import { WardListComponent } from './components/Admin/ward-list/ward-list.component';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChatComponent } from './components/Patients/chat/chat.component';
+import { MyProfileComponent } from './components/Patients/my-profile/my-profile.component';
+import { MedicalFilesComponent } from './components/Patients/medical-files/medical-files.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,7 +101,10 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     DoctorScheduleWidgetComponent,
     DoctorAppointmentsWidgetComponent,
     CreateWardComponent,
-    WardListComponent
+    WardListComponent,
+    ChatComponent,
+    MyProfileComponent,
+    MedicalFilesComponent
   ],
   imports: [
     BrowserModule,

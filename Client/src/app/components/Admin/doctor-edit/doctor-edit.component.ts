@@ -4,6 +4,7 @@ import { Speciality } from '../../../Models/speciality.model';
 import { Doctor } from '../../../Models/doctor.model';
 import { DataService } from '../../../services/data.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-doctor-edit',
@@ -31,7 +32,8 @@ export class DoctorEditComponent{
   constructor(
     private doctorService: DoctorService,
     private dataService : DataService,
-    private router : Router
+    private router : Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -64,9 +66,13 @@ export class DoctorEditComponent{
 
   updateDoctor(doctor:any){
     this.doctorService.editDoctor(doctor).subscribe({
-      next: () => {
+      next: (response) => {
         localStorage.removeItem('doctor')
-        this.router.navigate(['/admin/doctor-list']);
+        this.router.navigate(['/admin/doctor-list']).then(() => {
+          setTimeout(() => {
+            this.messageService.add({ severity: 'success', summary: 'Successfully saved', detail: `Details of Doctor ${response.firstName} has been updated`, life: 3000 });
+        }, 100);
+        });
       },
       error: (response) => {
         console.log(response);

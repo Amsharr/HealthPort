@@ -44,6 +44,6 @@ export class AuthenticationService {
   }
 
   showSuccessMessage() {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login successful!' });
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login successful!', life:2000 });
   }
 }

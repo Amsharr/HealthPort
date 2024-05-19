@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<p-toast />
 <body>
   <div class="container-fluid">
     <div class="row flex-nowrap">
@@ -6,7 +7,6 @@
             <app-side-panel></app-side-panel>
         </div>
         <div class="col py-3" style="margin-left: 230px;">
-          <h1 style="color: white;"> Upload Files   <i class="fa-solid fa-user-doctor icon"></i></h1>
             <br>
             <h3 style="color: white;">Search for Patient</h3>
           <app-advance-search></app-advance-search>
@@ -27,7 +27,7 @@
                         <tr>
                             <td>{{ patient.id }}</td>
                             <td>{{ patient.fullName }}</td>
-                            <td style="justify-content: center;">
+                            <td style="display: flex; align-items: center; justify-content: center;">
                               <p-fileUpload 
                               mode="basic" 
                               name="file" 
@@ -37,7 +37,8 @@
                               accept="application/pdf"
                               (onUpload)="onBasicUploadAuto($event, patient)" 
                               [auto]="true" 
-                              chooseLabel="Browse" />
+                              chooseLabel="Upload" />
+                              <button type="button" class="btn btn-success" style="margin-left: 10px;" (click)="open(content,patient)">Add Patient details <i class="pi pi-clipboard"></i></button>
                             </td>
                         </tr>
                     </ng-template>
@@ -46,5 +47,60 @@
         </div>
     </div>
   </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Patient Details</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form class="form-register">
+        <div class="mb-3">
+          <label for="dateOfBirth">Add Details below</label>
+          <div class="flex">
+            <div class="half-width">
+                <label>
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="height" 
+                    name="height"
+                    [(ngModel)]="patient.height"
+                    placeholder="cm" 
+                    required="">
+                    <span>Height</span>
+                </label>
+            </div>
+            <div class="half-width">
+                <label>
+                    <input 
+                    class="input" 
+                    type="text" 
+                    id="weight" 
+                    name="weight"
+                    [(ngModel)]="patient.weigth"
+                    placeholder="kg" 
+                    required="">
+                    <span>Weight</span>
+                </label>
+            </div>
+            <div class="half-width">
+                <p-dropdown 
+                id="bloodtype" 
+                name="bloodtype"
+                [options]="bloodtypes" 
+                [(ngModel)]="patient.bloodtype" 
+                optionLabel="name"
+                optionValue="code"
+                placeholder="Bloodtype"/>
+            </div>
+        </div>  
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="save(patient)">Save</button>
+    </div>
+  </ng-template>
 </body>
 

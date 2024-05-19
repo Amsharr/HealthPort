@@ -30,5 +30,9 @@ export class PatientsService {
     const deleteEndpoint = this.endpoint + '/delete';
     return this.apiService.delete<any>(deleteEndpoint, patientId);
   }
-  
+
+  getPatientById(patientId: number): Observable<Patient[]> {
+    const endpoint = `${this.endpoint}/byId/${patientId}`;
+    return this.apiService.get<Patient>(endpoint);
+  }
 }

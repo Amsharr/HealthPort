@@ -12,6 +12,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class PatientListComponent implements OnInit{
   patients: Patient[] = [];
+  page: number = 1;
+  pageSize: number = 5;
 
   constructor(
     private patientService: PatientsService,

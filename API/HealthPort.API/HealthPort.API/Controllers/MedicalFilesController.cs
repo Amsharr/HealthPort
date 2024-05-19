@@ -39,8 +39,34 @@ namespace HealthPort.API.Controllers
                 _hpDbcontext.MedicalFiles.Add(medicalFile);
                 await _hpDbcontext.SaveChangesAsync();
 
-                return Ok("File uploaded successfully");
+                return Ok();
             }
+        }
+
+        [HttpGet]
+        [Route("files")]
+        public async Task<IActionResult> GetFiles()
+        {
+            var files = await _hpDbcontext.MedicalFiles.Select(f => new
+            {
+                f.Id,
+                f.FileName
+            }).ToListAsync();
+
+            return Ok(files);
+        }
+
+        [HttpGet]
+        [Route("download/{id}")]
+        public async Task<IActionResult> DownloadFile(int id)
+        {
+            var file = await _hpDbcontext.MedicalFiles.FindAsync(id);
+            if (file == null)
+            {
+                return NotFound();
+            }
+
+            return File(file.Content, file.FileName);
         }
     }
 }

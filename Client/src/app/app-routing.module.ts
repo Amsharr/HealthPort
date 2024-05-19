@@ -27,6 +27,10 @@ import { DoctorAppointmentsComponent } from './components/Doctor/doctor-appointm
 import { DoctorScheduleComponent } from './components/Doctor/doctor-schedule/doctor-schedule.component';
 import { CreateWardComponent } from './components/Admin/create-ward/create-ward.component';
 import { WardListComponent } from './components/Admin/ward-list/ward-list.component';
+import { ChatComponent } from './components/Patients/chat/chat.component';
+import { MyProfileAdminComponent } from './components/Admin/account/my-profile-admin/my-profile-admin.component';
+import { MyProfileComponent } from './components/Patients/my-profile/my-profile.component';
+import { MedicalFilesComponent } from './components/Patients/medical-files/medical-files.component';
 
 const routes: Routes = [
   { 
@@ -133,7 +137,19 @@ const routes: Routes = [
   {
     path:'doctor/schedule',
     component: DoctorScheduleComponent
-  }
+  },
+  {
+    path:'homepage/chat',
+    component: ChatComponent
+  },
+  {
+    path:'homepage/my-profile',
+    component: MyProfileComponent
+  },
+  {
+    path:'homepage/files',
+    component: MedicalFilesComponent
+  },
 ];
 
 @NgModule({

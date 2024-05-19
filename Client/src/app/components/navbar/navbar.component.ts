@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,7 @@ username: string = '';
 
 private offcanvasService = inject(NgbOffcanvas);
   
-constructor(private router: Router) { }
+constructor(private router: Router, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.setNavType();
@@ -23,7 +24,12 @@ constructor(private router: Router) { }
   }
 
   logout(){
-    this.router.navigate(['/landing-page']);
+    this.router.navigate(['/landing-page']).then(() => {
+      setTimeout(() => {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Logged out', life:2000 });
+    }, 100);
+    });
+
     localStorage.removeItem('nurse');
     localStorage.removeItem('doctor');
     localStorage.removeItem('patient');

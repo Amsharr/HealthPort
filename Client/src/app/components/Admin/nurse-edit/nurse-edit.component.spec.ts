@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NurseEditComponent } from './nurse-edit.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { PatientListComponent } from '../patient-list/patient-list.component';
 
 describe('NurseEditComponent', () => {
   let component: NurseEditComponent;
@@ -8,7 +10,8 @@ describe('NurseEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NurseEditComponent]
+      declarations: [PatientListComponent],
+      imports: [HttpClientTestingModule],
     })
     .compileComponents();
     

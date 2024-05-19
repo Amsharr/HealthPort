@@ -47,10 +47,11 @@ export class WardListComponent {
     )
   }
 
-  deleteWard(wardId: number) {
-    this.adminService.deleteWardById(wardId).subscribe({
+  deleteWard(id: number) {
+    this.adminService.deleteWardById(id).subscribe({
       next: () => {
         this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Ward room deleted', life: 3000 });
+        this.loadTable();
       },
       error: (response) => {
         console.error('Error deleting patient:', response);
@@ -65,8 +66,7 @@ export class WardListComponent {
         icon: 'pi pi-info-circle',
         acceptButtonStyleClass: 'p-button-danger p-button-sm',
         accept: () => {
-          this.deleteWard(wardId);       
-          this.loadTable();
+          this.deleteWard(wardId);
         }
     });
   }

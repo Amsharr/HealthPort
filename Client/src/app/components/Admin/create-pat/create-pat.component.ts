@@ -15,13 +15,19 @@ export class CreatePatComponent implements OnInit{
     id: 0,
     firstName: '',
     lastName: '',
+    gender: '',
+    nationality:'',
     dob: null,
     nicNo: null,
     mobileNo: null,
     email: '',
     address: '',
     username: '',
-    password: ''
+    password: '',
+    fullName:'',
+    height:'',
+    weigth:'',
+    bloodtype:''
   }
   submitBtnClicked: boolean = false;
 

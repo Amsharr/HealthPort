@@ -54,10 +54,10 @@
             <a class="nav-link" routerLink="my-appointments">My Appointments</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">My reports</a>
+            <a class="nav-link" routerLink="/homepage/files">My reports</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/landing-page/facilities">Chatroom</a>
+            <a class="nav-link" routerLink="/homepage/chat">Chatroom</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
@@ -77,15 +77,19 @@
           <a><i class="fa-solid fa-right-to-bracket"></i> <span class="ms-1 d-none d-sm-inline">Sign in</span></a>
         </button>       
       </div>
+
+      <!-- navbar items for patients -->
       <div ngbDropdown class="d-inline-block" *ngIf="menuType==='homepage'">
         <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem  (click)="openEnd(content)"><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
+          <button ngbDropdownItem  routerLink="/homepage/my-profile"><a><span class="ms-1 d-none d-sm-inline">My profile   </span><i class="fa-solid fa-user"></i></a></button>
           <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
         </div>
       </div>  
+
+      <!-- navbar items for admin -->
       <div ngbDropdown class="d-inline-block" *ngIf="menuType==='admin'">
         <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
@@ -95,6 +99,8 @@
           <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
         </div>
       </div>  
+
+      <!-- navbar items for nurse -->
       <div ngbDropdown class="d-inline-block" *ngIf="menuType==='nurse'">
         <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">{{username}}</span></a>
@@ -104,6 +110,8 @@
           <button ngbDropdownItem (click)="logout()"><a><span class="ms-1 d-none d-sm-inline">Logout   </span><i class="fa-solid fa-right-from-bracket"></i></a></button>
         </div>
       </div> 
+
+      <!-- navbar items for doctor -->
       <div ngbDropdown class="d-inline-block" *ngIf="menuType==='doctor'">
         <button type="button" class="btn-login" id="dropdownBasic1" ngbDropdownToggle>
           <a><i class="fa-solid fa-user"></i><span class="ms-1 d-none d-sm-inline">Dr. {{username}}</span></a>

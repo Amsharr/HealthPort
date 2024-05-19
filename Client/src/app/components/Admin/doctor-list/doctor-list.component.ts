@@ -14,6 +14,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class DoctorListComponent {
   doctors: Doctor[] = [];
   specialties!: Speciality[];
+  page: number = 1;
+  pageSize: number = 3;
 
   constructor(
     private doctorService: DoctorService,

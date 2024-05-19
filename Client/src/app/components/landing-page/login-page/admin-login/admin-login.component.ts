@@ -15,7 +15,7 @@ export class AdminLoginComponent {
   loginBtnClicked: boolean = false;
   
   constructor(
-    private autheticationService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private messageService: MessageService,
     private router: Router
   ){}
@@ -27,10 +27,14 @@ export class AdminLoginComponent {
       return;
     }else{
       this.loginBtnClicked = false;
-      this.autheticationService.login(this.username,this.password,'api/Admin/login')
+      this.authenticationService.login(this.username,this.password,'api/Admin/login')
       .subscribe((response) => {
         sessionStorage.setItem('username', response.username);
-        this.router.navigate(['/admin-dashboard']);
+        this.router.navigate(['/admin-dashboard']).then(() => {
+          setTimeout(() => {
+            this.authenticationService.showSuccessMessage();
+        }, 100);
+        });
       });
     }
   }

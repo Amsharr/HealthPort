@@ -5,6 +5,7 @@ import { PatientsService } from '../../../services/patients.service';
 import { SharedService } from '../../../services/shared.service';
 import { Subscription } from 'rxjs';
 import { DataService } from '../../../services/data.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-patient-edit',
@@ -14,16 +15,22 @@ import { DataService } from '../../../services/data.service';
 export class PatientEditComponent implements OnInit{
   
   patient: Patient = {
-    id:0,
+    id: 0,
     firstName: '',
     lastName: '',
-    dob: null ,
+    gender: '',
+    nationality:'',
+    dob: null,
     nicNo: null,
-    mobileNo:null,
+    mobileNo: null,
     email: '',
     address: '',
     username: '',
-    password: ''
+    password: '',
+    fullName:'',
+    height:'',
+    weigth:'',
+    bloodtype:''
   };
 
   subscription!: Subscription;
@@ -31,6 +38,7 @@ export class PatientEditComponent implements OnInit{
   constructor(
     private patientService: PatientsService,
     private dataService: DataService,
+    private messageService: MessageService,
     private router: Router
   ) {}
 
@@ -50,9 +58,13 @@ export class PatientEditComponent implements OnInit{
 
   update(patient: any){
     this.patientService.editPatient(patient).subscribe({
-      next: () => {
+      next: (response) => {
         localStorage.removeItem('patient')
-        this.router.navigate(['/admin/patient-list']);
+        this.router.navigate(['/admin/patient-list']).then(() => {
+          setTimeout(() => {
+            this.messageService.add({ severity: 'success', summary: 'Successfully saved', detail: `Details of patient ${response.fullName} has been updated`, life: 3000 });
+        }, 100);
+        });
       },
       error: (response) => {
         console.log(response);

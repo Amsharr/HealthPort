@@ -32,8 +32,8 @@ export class AdminService {
   }
 
   //delete WardRoom account
-  deleteWardById(wardId: number): Observable<any> {
+  deleteWardById(id: number): Observable<any> {
     const deleteEndpoint = this.endpoint + '/deleteWard';
-    return this.apiService.delete<any>(deleteEndpoint, wardId);
+    return this.apiService.delete<any>(deleteEndpoint, id);
   }
 }

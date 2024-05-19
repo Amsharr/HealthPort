@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <h2>Files</h2>
+    <ul>
+      <li *ngFor="let file of files">
+        <div>
+
+            {{ file.FileName }}
+        </div>
+        <div>
+
+            <!-- <button (click)="downloadFile(file.Id, file.FileName)">Download</button> -->
+        </div>
+      </li>
+    </ul>
+  </div>
+  

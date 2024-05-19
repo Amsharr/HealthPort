@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Nurse } from '../../../Models/nurse.model';
 import { NurseService } from '../../../services/nurse.service';
 import { DataService } from '../../../services/data.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-nurse-edit',
@@ -27,7 +28,8 @@ export class NurseEditComponent {
   constructor(
     private nurseService : NurseService,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -40,9 +42,13 @@ export class NurseEditComponent {
 
   submit(nurse: any){
     this.nurseService.editNurse(nurse).subscribe({
-      next: () => {
+      next: (response) => {
         localStorage.removeItem('nurse')
-        this.router.navigate(['/admin/nurse-list']);
+        this.router.navigate(['/admin/nurse-list']).then(() => {
+          setTimeout(() => {
+            this.messageService.add({ severity: 'success', summary: 'Successfully saved', detail: `Details of Nurse ${response.firstName} has been updated`, life: 3000 });
+        }, 100);
+        });
       },
       error: (response) => {
         console.log(response);

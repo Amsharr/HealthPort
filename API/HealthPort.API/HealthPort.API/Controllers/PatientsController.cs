@@ -85,6 +85,7 @@ namespace HealthPort.API.Controllers
             patient.bloodtype = updateRequest.bloodtype;
             patient.gender = updateRequest.gender;
             patient.height = updateRequest.height;
+            patient.weigth = updateRequest.weigth;
             patient.nationality = updateRequest.nationality;    
 
 
@@ -105,7 +106,7 @@ namespace HealthPort.API.Controllers
             _hpDbcontext.Patients.Remove(patient);
             await _hpDbcontext.SaveChangesAsync();
 
-            return Ok("Patient deleted successfully.");
+            return Ok();
         }
 
         [HttpPost]
@@ -159,6 +160,20 @@ namespace HealthPort.API.Controllers
             foreach (var appointment in appointments)
             {
                 patients = _hpDbcontext.Patients.Where(x => x.id == appointment.patientId).ToList();
+            }
+
+            return Ok(patients);
+        }
+
+        [HttpGet]
+        [Route("byId/{patientId}")]
+        public async Task<IActionResult> GetAllPatientById(int patientId)
+        {
+            var patients = await _hpDbcontext.Patients.Where(x => x.id == patientId).ToListAsync();
+
+            foreach (var patient in patients)
+            {
+                patient.fullName = $"{patient.firstName} {patient.lastName}";
             }
 
             return Ok(patients);

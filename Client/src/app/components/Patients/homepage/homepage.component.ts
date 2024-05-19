@@ -8,6 +8,7 @@ import { APIService } from '../../../services/api.service';
 import { AppointmentsService } from '../../../services/appointments.service';
 import { Time } from '@angular/common';
 import { MessageService } from 'primeng/api';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-homepage',
@@ -46,7 +47,8 @@ export class HomepageComponent implements OnInit {
     private doctorService: DoctorService,
     private apiService: APIService,
     private appointmentService: AppointmentsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private authenticationService: AuthenticationService
   ) {
     
   }
@@ -56,6 +58,12 @@ export class HomepageComponent implements OnInit {
 
     this.appointment.patientName = this.patientFullName;
     this.appointment.patientId = +sessionStorage.getItem('patientId')! || 0;
+
+    
+  }
+
+  showMsg(){
+    this.messageService.add({ severity: 'error', summary: 'Fill in required information', detail: 'Please enter all required fields', life: 2000 });  
   }
 
   loadSpecialites(){

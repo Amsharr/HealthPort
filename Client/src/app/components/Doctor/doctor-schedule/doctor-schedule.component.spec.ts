@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DoctorScheduleComponent } from './doctor-schedule.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DoctorScheduleComponent', () => {
   let component: DoctorScheduleComponent;
@@ -8,7 +9,8 @@ describe('DoctorScheduleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DoctorScheduleComponent]
+      declarations: [DoctorScheduleComponent],
+      imports: [HttpClientTestingModule],
     })
     .compileComponents();
     
@@ -21,3 +23,4 @@ describe('DoctorScheduleComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

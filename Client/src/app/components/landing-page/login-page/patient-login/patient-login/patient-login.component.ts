@@ -32,7 +32,11 @@ export class PatientLoginComponent {
       sessionStorage.setItem('username', response.username);
       sessionStorage.setItem('patientId', response.id);
       sessionStorage.setItem('fullname', response.fullName);
-      this.router.navigate(['/homepage']);
+      this.router.navigate(['/homepage']).then(() => {
+        setTimeout(() => {
+          this.authenticationService.showSuccessMessage();
+      }, 100);
+      });
     });
     }
     

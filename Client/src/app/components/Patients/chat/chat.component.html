@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-4 contacts">
+            <h3>Contact list <i class="pi pi-address-book" style="font-size: 1em;"></i></h3>
+            <ul>
+              <li *ngFor="let contact of contacts" (click)="selectContact(contact)">
+                {{ contact.name }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-8 chat">
+            <!-- Chat messages -->
+            <div class="messages" *ngIf="selectedContact">
+              <div *ngFor="let message of selectedContact.messages" [ngClass]="{'sent': message.sentByUser, 'received': !message.sentByUser}">
+                {{ message.content }}
+              </div>
+            </div>
+            <!-- Input field for sending messages -->
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Type a message" [(ngModel)]="newMessage" style="margin-right: 20px;">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button" (click)="sendMessage()">Send <i class="pi pi-send"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+  
